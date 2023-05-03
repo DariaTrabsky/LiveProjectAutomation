@@ -29,4 +29,9 @@ public class HomeSteps {
         System.out.println("expectedValues.toString() = " + expectedValues.toString());
     }
 
+    @Then("verify title of the homepage is {string}")
+    public void verifyTitleOfTheHomepageIs(String title) {
+        String actual = BrowserUtils.getDriver().getTitle();
+        BrowserUtils.assertEquals(actual,title);
+    }
 }
