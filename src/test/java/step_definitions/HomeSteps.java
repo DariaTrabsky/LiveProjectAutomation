@@ -23,7 +23,7 @@ public class HomeSteps {
         BrowserUtils.assertEquals(expectedValues.get("address2"), page.addressLine2.getText());
         BrowserUtils.isDisplayed(page.addressLine2);
 
-        BrowserUtils.assertEquals(expectedValues.get("phoneNumber"), page.phoneNumber.getText());
+        BrowserUtils.assertEquals(expectedValues.get("phoneNumbe"), page.phoneNumber.getText());
         BrowserUtils.isDisplayed(page.phoneNumber);
 
         System.out.println("expectedValues.toString() = " + expectedValues.toString());
