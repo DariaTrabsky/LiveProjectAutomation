@@ -39,4 +39,7 @@ public class HomePage {
     @FindBy(xpath = "//a[text()='French']")
     public WebElement frenchBtn;
 
+    @FindBy(xpath = "//a[text()='Join Now']")
+    public WebElement joinNowBtn;
+
 }
