@@ -6,7 +6,9 @@ import org.openqa.selenium.support.PageFactory;
 import utils.BrowserUtils;
 
 public class HomePage {
-    public HomePage() { PageFactory.initElements(BrowserUtils.getDriver(), this);}
+    public HomePage() {
+        PageFactory.initElements(BrowserUtils.getDriver(), this);
+    }
 
     @FindBy(xpath = "//i[text()='10090 Main Street']")
     public WebElement addressLine1;
