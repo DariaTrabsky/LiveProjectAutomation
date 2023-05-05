@@ -6,7 +6,7 @@ Feature: Homepage Scenarios
     Then the following should be displayed:
       | address1    | 10090 Main Street |
       | address2    | Fairfax, VA, USA  |
-      | phoneNumber | +1 703-831-3227   |
+      | phoneNumber | +1 703-831-3217   |
 
   @AS-5
   Scenario: Verify title of the homepage should be "Advance Systems - Home"

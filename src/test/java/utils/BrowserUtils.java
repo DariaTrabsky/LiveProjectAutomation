@@ -24,7 +24,7 @@ public class BrowserUtils {
 
     public static WebDriver getDriver() {
         if (driver == null) {
-            if (ConfigReader.readProperty("config.properties", "runInSaucelabs")
+            if (ConfigReader.readProperty("Config.properties", "runInSaucelabs")
                     .equalsIgnoreCase("true")) {
                 getRemoteDriver();
             } else {
