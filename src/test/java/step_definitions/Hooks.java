@@ -9,8 +9,9 @@ import utils.CucumbersLogUtils;
 public class Hooks {
 
     @Before
-    public void setUp(Scenario scenario){
+    public void setUp(Scenario scenario) {
         BrowserUtils.getDriver();
+        BrowserUtils.sleep(1000);
         CucumbersLogUtils.initScenario(scenario);
 
     }
