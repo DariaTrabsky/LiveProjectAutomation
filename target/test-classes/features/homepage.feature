@@ -14,7 +14,7 @@ Feature: Homepage Scenarios
 
   @AS-6
   Scenario: Verify navigation bar buttons and language dropdown are displayed
-    Given verify title of the homepage is "Advance Systems - Home" 
+    Given verify title of the homepage is "Advance Systems - Home"
     When I look at the navigation bar
     Then verify the following nav button are displayed:
       | Get Support |

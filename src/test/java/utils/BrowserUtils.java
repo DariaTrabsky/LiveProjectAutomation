@@ -100,7 +100,7 @@ public class BrowserUtils {
                             "border: 3px solid red; background: yellow");
                     //TODO: apply report screenshot here
                     sleep(200);
-                    CucumbersLogUtils.logInfo("clicked on "+ element.toString(), false);
+                    CucumbersLogUtils.logInfo("clicked on "+ element.toString(), true);
                 } else {
                     sleep(600);
                     js.executeScript("arguments[0].setAttribute('style', arguments[1]);", element, "");

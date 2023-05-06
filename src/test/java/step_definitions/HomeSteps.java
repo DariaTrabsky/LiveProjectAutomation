@@ -76,6 +76,11 @@ public class HomeSteps {
             }
         }
     }
+
+    @Given("I have names from testimonails")
+    public void iHaveNamesFromTestimonails() {
+
+    }
 }
 
 
