@@ -5,6 +5,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.BrowserUtils;
 
+import java.util.List;
+
 public class HomePage {
     public HomePage() {
         PageFactory.initElements(BrowserUtils.getDriver(), this);
@@ -16,10 +18,10 @@ public class HomePage {
     @FindBy(xpath = "//strong[text()='Fairfax, VA, USA']")
     public WebElement addressLine2;
 
-    @FindBy(xpath ="//strong[text()='+1 703-831-3227']")
+    @FindBy(xpath = "//strong[text()='+1 703-831-3217']")
     public WebElement phoneNumber;
 
-    @FindBy(xpath =" //div[@class='header-top-one']//div[@class='container']")
+    @FindBy(xpath = " //div[@class='header-top-one']//div[@class='container']")
     public WebElement navBar;
 
     @FindBy(xpath = "//a[text()='Get Support']")
@@ -53,5 +55,17 @@ public class HomePage {
 
     @FindBy(xpath = "//span[@class='fa fa-linkedin']")
     public WebElement linkedin;
+
+    @FindBy(xpath = "//h2[.='Words from our Clients']")
+    public WebElement testimonialsHeader;
+
+    @FindBy(xpath = "//section[@class='testimonial-section sp-one parallax-one']//div[@class='text']")
+    public List<WebElement> testimonialsMsg;
+
+    @FindBy(xpath = "//section[@class='testimonial-section sp-one parallax-one']//h3")
+    public List<WebElement> testimonialsName;
+
+    @FindBy(xpath = "//section[@class='testimonial-section sp-one parallax-one']//div[@class='designation']")
+    public List<WebElement> testimonialsState;
 
 }
