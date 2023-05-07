@@ -5,6 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.WebElement;
 import pages.HomePage;
 import utils.BrowserUtils;
 
@@ -74,6 +75,57 @@ public class HomeSteps {
                     System.out.println("Button doesn't exist");
 
             }
+        }
+    }
+
+    @Then("verify the social media buttons are displayed:")
+    public void verifyTheSocialMediaButtonsAreDisplayed(List<String> socialMediaBtn) {
+        for (String each : socialMediaBtn) {
+            switch (each) {
+                case "Facebook":
+                    BrowserUtils.isDisplayed(page.facebookBtn);
+                    break;
+                case "Twitter":
+                    BrowserUtils.isDisplayed(page.twitterBtn);
+                    break;
+                case "Instagram":
+                    BrowserUtils.isDisplayed(page.instagramBtn);
+                    break;
+                case "LinkedIn":
+                    BrowserUtils.isDisplayed(page.linkedin);
+                    break;
+                default:
+                    System.out.println("Invalid buttons");
+            }
+        }
+    }
+
+    @Then("Verify the testimonials header is {string}")
+    public void verifyTheTestimonialsHeaderIs(String expectedTestimonialsHeader) {
+        BrowserUtils.assertEquals(BrowserUtils.getText(page.testimonialsHeader), expectedTestimonialsHeader);
+
+    }
+
+    @And("Verify there are multiple testimonials messages under Testimonials Section")
+    public void verifyThereAreMultipleTestimonialsMessagesUnderTestimonialsSection() {
+
+        BrowserUtils.assertTrue(page.testimonialsMsg.size() > 1);
+        BrowserUtils.assertTrue(page.testimonialsName.size() > 1);
+        BrowserUtils.assertTrue(page.testimonialsState.size() > 1);
+
+    }
+
+    @And("Verify there are people names and states under Testimonials Section")
+    public void verifyThereArePeopleNamesAndStatesUnderTestimonialsSection() {
+
+        for (WebElement msg : page.testimonialsMsg) {
+            if (msg.isDisplayed()) BrowserUtils.assertTrue(true);
+        }
+        for (WebElement name : page.testimonialsName) {
+            if (name.isDisplayed()) BrowserUtils.assertTrue(true);
+        }
+        for (WebElement state : page.testimonialsState) {
+            if (state.isDisplayed()) BrowserUtils.assertTrue(true);
         }
     }
 }
