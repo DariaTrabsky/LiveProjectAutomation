@@ -44,17 +44,31 @@ public class HomePage {
     @FindBy(xpath = "//a[text()='Join Now']")
     public WebElement joinNowBtn;
 
-    @FindBy(xpath = "//span[@class='fa fa-facebook']")
+
+    @FindBy(xpath = "//div[@class='socail-icon-area']//a")
+    public List <WebElement> socialMediaButtons;
+
+    @FindBy(xpath = "//li/a/i[@class='fa fa-facebook-square']")
     public WebElement facebookBtn;
+    @FindBy(xpath = "//li/a/i[@class='fa fa-twitter-square']")
+    public WebElement twitterBtn;
+    @FindBy(xpath = "//li/a/i[@class='fa fa-instagram']")
+    public WebElement instagramBtn;
+    @FindBy(xpath = "//li/a/i[@class='fa fa-linkedin-square']")
+    public WebElement linkedinBtn;
+
+
+    @FindBy(xpath = "//span[@class='fa fa-facebook']")
+    public WebElement facebookFtBtn;
 
     @FindBy(xpath = "//span[@class='fa fa-twitter']")
-    public WebElement twitterBtn;
+    public WebElement twitterFtBtn;
 
     @FindBy(xpath = "//a[@target='_blank']//span[@class='fa fa-instagram']")
-    public WebElement instagramBtn;
+    public WebElement instagramFtBtn;
 
     @FindBy(xpath = "//span[@class='fa fa-linkedin']")
-    public WebElement linkedin;
+    public WebElement linkedinFtBtn;
 
     @FindBy(xpath = "//h2[.='Words from our Clients']")
     public WebElement testimonialsHeader;

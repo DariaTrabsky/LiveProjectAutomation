@@ -16,10 +16,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Iterator;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 public class BrowserUtils {
-    private BrowserUtils(){};
+    private BrowserUtils() {
+    }
+
+    ;
     private static WebDriver driver = null;
 
     public static WebDriver getDriver() {
@@ -34,10 +39,11 @@ public class BrowserUtils {
         return driver;
     }
 
-    public static void closeDriver(){
+    public static void closeDriver() {
         driver.close();
         driver = null;
     }
+
     public static void quitDriver() {
         if (driver != null) {
             driver.quit();
@@ -45,8 +51,8 @@ public class BrowserUtils {
         }
     }
 
-    private static void initializeDriver(String browser){
-        switch(browser) {
+    private static void initializeDriver(String browser) {
+        switch (browser) {
             case "chrome":
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
@@ -61,14 +67,15 @@ public class BrowserUtils {
         }
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get(ConfigReader.readProperty("Config.properties","url"));
+        driver.get(ConfigReader.readProperty("Config.properties", "url"));
     }
-    private static void getRemoteDriver(){
+
+    private static void getRemoteDriver() {
         String sauceKey = "3f8b270b-1ad1-446c-98e2-bcb331403032";
         String sauceUsername = "oauth-majidsoda-9e4b6";
         String url = "https://" + sauceUsername + ":" + sauceKey + "@ondemand.us-west-1.saucelabs.com:443/wd/hub";
 
-        try{
+        try {
             DesiredCapabilities capabilities = DesiredCapabilities.chrome();
             capabilities.setCapability("version", "111");
             capabilities.setCapability("platform", "Windows 11");
@@ -77,19 +84,21 @@ public class BrowserUtils {
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
-       // driver.manage().window().maximize();
+        // driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.get(ConfigReader.readProperty("Config.properties","url"));
+        driver.get(ConfigReader.readProperty("Config.properties", "url"));
     }
-    public static void switchToNewWindow(){
-        for(String each: driver.getWindowHandles()){
-            if(!each.equalsIgnoreCase(driver.getWindowHandle())) {
+
+    public static void switchToNewWindow() {
+        for (String each : driver.getWindowHandles()) {
+            if (!each.equalsIgnoreCase(driver.getWindowHandle())) {
                 System.out.println(driver.getTitle());
                 System.out.println(driver.getCurrentUrl());
                 driver.switchTo().window(each);
             }
         }
     }
+
     public static void highlightElement(WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
 

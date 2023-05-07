@@ -5,6 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import pages.HomePage;
 import utils.BrowserUtils;
@@ -83,16 +84,16 @@ public class HomeSteps {
         for (String each : socialMediaBtn) {
             switch (each) {
                 case "Facebook":
-                    BrowserUtils.isDisplayed(page.facebookBtn);
+                    BrowserUtils.isDisplayed(page.facebookFtBtn);
                     break;
                 case "Twitter":
-                    BrowserUtils.isDisplayed(page.twitterBtn);
+                    BrowserUtils.isDisplayed(page.twitterFtBtn);
                     break;
                 case "Instagram":
-                    BrowserUtils.isDisplayed(page.instagramBtn);
+                    BrowserUtils.isDisplayed(page.instagramFtBtn);
                     break;
                 case "LinkedIn":
-                    BrowserUtils.isDisplayed(page.linkedin);
+                    BrowserUtils.isDisplayed(page.linkedinFtBtn);
                     break;
                 default:
                     System.out.println("Invalid buttons");
@@ -128,8 +129,62 @@ public class HomeSteps {
             if (state.isDisplayed()) BrowserUtils.assertTrue(true);
         }
     }
+
+    @And("verify {string} buttons are displayed on the main page")
+    public void verifyButtonsAreDisplayedOnTheMainPage(String socialMedia) {
+        switch (socialMedia) {
+            case "facebook":
+                BrowserUtils.isDisplayed(page.facebookBtn);
+                break;
+            case "twitter":
+                BrowserUtils.isDisplayed(page.twitterBtn);
+                break;
+            case "instagram":
+                BrowserUtils.isDisplayed(page.instagramBtn);
+                break;
+            case "linkedin":
+                BrowserUtils.isDisplayed(page.linkedinBtn);
+                break;
+            default:
+                Assert.fail("Unknown social media button");
+        }
+    }
+
+    @Then("verify when media button is clicked user gets redirected to the {string} page")
+    public void verifyWhenMediaButtonIsClickedUserGetsRedirectedToThePage(String expectedUrl) throws InterruptedException {
+        switch (expectedUrl) {
+            case "https://www.facebook.com/":
+                BrowserUtils.click(page.facebookBtn);
+                String actualUrlFacebook = BrowserUtils.getDriver().getCurrentUrl();
+                Assert.assertEquals(expectedUrl, actualUrlFacebook);
+                WebElement facebookTitle = BrowserUtils.getDriver().findElement(By.xpath("//title[contains(text(),'Facebook')]"));
+                BrowserUtils.highlightElement(facebookTitle);
+                break;
+            case "https://twitter.com/":
+                BrowserUtils.click(page.twitterBtn);
+                String actualUrlTwitter = BrowserUtils.getDriver().getCurrentUrl();
+                Assert.assertEquals(expectedUrl, actualUrlTwitter);
+                WebElement twitterTitle = BrowserUtils.getDriver().findElement(By.xpath("//title[contains(text(),'Twitter')]"));
+                BrowserUtils.highlightElement(twitterTitle);
+                break;
+            case "https://www.instagram.com/":
+                BrowserUtils.click(page.instagramBtn);
+                String actualUrlInstagram = BrowserUtils.getDriver().getCurrentUrl();
+                Assert.assertEquals(expectedUrl, actualUrlInstagram);
+                WebElement instagramTitle = BrowserUtils.getDriver().findElement(By.xpath("//title[contains(text(),'Instagram')]"));
+                BrowserUtils.highlightElement(instagramTitle);
+
+                break;
+            case "https://www.linkedin.com/":
+                BrowserUtils.click(page.linkedinBtn);
+                String actualUrlLinkedin = BrowserUtils.getDriver().getCurrentUrl();
+                Assert.assertEquals(expectedUrl, actualUrlLinkedin);
+                WebElement linkedinTitle = BrowserUtils.getDriver().findElement(By.xpath("//title[contains(text(),'LinkedIn')]"));
+                BrowserUtils.highlightElement(linkedinTitle);
+                break;
+            default:
+                Assert.fail("Unknown social media button");
+        }
+    }
 }
-
-
-
 

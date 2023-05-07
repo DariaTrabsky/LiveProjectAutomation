@@ -24,6 +24,18 @@ Feature: Homepage Scenarios
       | Spanish     |
       | French      |
 
+  @AS-9
+  Scenario Outline: Verify social media buttons redirect to correct URL
+    Given verify title of the homepage is "Advance Systems - Home"
+    And verify "<social_media>" buttons are displayed on the main page
+    Then verify when media button is clicked user gets redirected to the "<url>" page
+    Examples:
+      | social_media | url                        |
+      | facebook     | https://www.facebook.com/  |
+      | twitter      | https://twitter.com/       |
+      | instagram    | https://www.instagram.com/ |
+      | linkedin     | https://www.linkedin.com/  |
+
   @AS-15
   Scenario: Verify social media buttons displayed in the footer section
     Then verify the social media buttons are displayed:
@@ -37,3 +49,4 @@ Feature: Homepage Scenarios
     Then Verify the testimonials header is "Words from our Clients"
     And Verify there are multiple testimonials messages under Testimonials Section
     And Verify there are people names and states under Testimonials Section
+
