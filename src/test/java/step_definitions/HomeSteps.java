@@ -5,8 +5,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.By;
 import pages.HomePage;
 import utils.BrowserUtils;
 
@@ -39,6 +39,51 @@ public class HomeSteps {
         String actual = BrowserUtils.getDriver().getTitle();
         BrowserUtils.assertEquals(actual, title);
     }
+
+    @Then("Verify corresponding window has url as {string}")
+    public void verifyCorrespondingWindowHasUrlAs(String URL) {
+        BrowserUtils.switchToNewWindow();
+        BrowserUtils.sleep(3000);
+        BrowserUtils.assertEquals(BrowserUtils.getDriver().getCurrentUrl(), URL);
+    }
+
+
+    @And("I click on secondary navigation bar button {string}")
+    public void iClickOnNavigationBarButton(String navbtn) {
+            switch(navbtn.trim()){
+                case "Home":
+                    BrowserUtils.click(page.homeSecNavBarBtn);
+                    break;
+                case "About Us":
+                    BrowserUtils.click(page.aboutUsSecNavBtn);
+                    break;
+                case "Services":
+                    BrowserUtils.click(page.servicesSecNavBtn);
+                    break;
+                case "Clients":
+                    BrowserUtils.click(page.clientsSecNavBtn);
+                    break;
+                case "Join Us":
+                    BrowserUtils.click(page.joinUsSecNavBtn);
+                    break;
+                case "Contact Us":
+                    BrowserUtils.click(page.contactUsSecNavBtn);
+                    break;
+                default:
+                    System.out.println("Invalid Link");
+                    Assert.fail();
+
+
+            }
+
+        }
+
+    @When("I scroll down the page")
+    public void iScrollDownThePage() {
+        BrowserUtils.moveIntoView(page.scrollIntoView);
+    }
+
+
 
 
     @Given("I am on the {string} page")

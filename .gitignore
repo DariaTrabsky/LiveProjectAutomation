@@ -1,3 +1,5 @@
 /.idea
 /target
+target
+/CukesRunner.java
 LiveProjectAutomation.iml

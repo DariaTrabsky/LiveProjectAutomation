@@ -25,8 +25,8 @@ public class apiHooks {
         RestAssured.baseURI = "https://api.octoperf.com";
 
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("password", ConfigReader.readProperty("Config.properties","password"));
-        map.put("username", ConfigReader.readProperty("Config.properties","username"));
+        map.put("password", ConfigReader.readProperty("ConfigLocal.properties","password"));
+        map.put("username", ConfigReader.readProperty("ConfigLocal.properties","username"));
 
         Response response = RestAssured.given()
                 .queryParams(map)
