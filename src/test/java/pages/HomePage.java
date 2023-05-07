@@ -5,8 +5,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.BrowserUtils;
 
+import java.util.List;
+
 public class HomePage {
-    public HomePage() { PageFactory.initElements(BrowserUtils.getDriver(), this);}
+    public HomePage() {
+        PageFactory.initElements(BrowserUtils.getDriver(), this);
+    }
 
     @FindBy(xpath = "//i[text()='10090 Main Street']")
     public WebElement addressLine1;
@@ -36,5 +40,22 @@ public class HomePage {
     public WebElement spanishBtn;
     @FindBy(xpath = "//a[text()='French']")
     public WebElement frenchBtn;
+
+    @FindBy(xpath = "//a[text()='Join Now']")
+    public WebElement joinNowBtn;
+
+    @FindBy(xpath = "//div[@class='socail-icon-area']//a")
+    public List <WebElement> socialMediaButtons;
+
+    @FindBy(xpath = "//li/a/i[@class='fa fa-facebook-square']")
+    public WebElement facebookBtn;
+    @FindBy(xpath = "//li/a/i[@class='fa fa-twitter-square']")
+    public WebElement twitterBtn;
+    @FindBy(xpath = "//li/a/i[@class='fa fa-instagram']")
+    public WebElement instagramBtn;
+    @FindBy(xpath = "//li/a/i[@class='fa fa-linkedin-square']")
+    public WebElement linkedinBtn;
+
+
 
 }
