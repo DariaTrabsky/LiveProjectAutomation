@@ -66,5 +66,7 @@ Feature: Homepage Scenarios
       | Contact Us        | https://tla-batch7.github.io/advancesystems-test-b7/contact.html                    |
 
 
-
+  @AS-12
+  Scenario: Verify list of companies above the footer is displayed
+    Then verify list of companies is displayed
 

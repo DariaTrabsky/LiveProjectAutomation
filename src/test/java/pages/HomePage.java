@@ -108,4 +108,9 @@ public class HomePage {
     @FindBy(xpath = "//section[@class='testimonial-section sp-one parallax-one']//div[@class='designation']")
     public List<WebElement> testimonialsState;
 
+    @FindBy(xpath = "(//div[@class='owl-stage'])[3]")
+    public WebElement listOfCompanies;
+
+    @FindBy(xpath = "//div[@class='six-item-carousel owl-carousel owl-theme owl-dot-none owl-nav-none owl-loaded owl-drag']")
+    public WebElement listOfCompanies2;
 }

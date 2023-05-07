@@ -231,5 +231,10 @@ public class HomeSteps {
                 Assert.fail("Unknown social media button");
         }
     }
+
+    @Then("verify list of companies is displayed")
+    public void verifyListOfCompaniesIsDisplayed() {
+        BrowserUtils.isDisplayed(page.listOfCompanies2);
+    }
 }
 
