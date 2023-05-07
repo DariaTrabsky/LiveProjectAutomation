@@ -36,20 +36,11 @@ Feature: Homepage Scenarios
       | instagram    | https://www.instagram.com/ |
       | linkedin     | https://www.linkedin.com/  |
 
-  @AS-15
-  Scenario: Verify social media buttons displayed in the footer section
-    Then verify the social media buttons are displayed:
-    | Facebook |
-    | Twitter  |
-    | Instagram|
-    | LinkedIn |
-
   @AS-11
   Scenario: Display Testimonials Section
     Then Verify the testimonials header is "Words from our Clients"
     And Verify there are multiple testimonials messages under Testimonials Section
     And Verify there are people names and states under Testimonials Section
-
 
   @AS-8
   Scenario Outline: Verify each button goes to corresponding url
@@ -65,6 +56,14 @@ Feature: Homepage Scenarios
       | Join Us           | https://tla-batch7.github.io/advancesystems-test-b7/joinUs.html                     |
       | Contact Us        | https://tla-batch7.github.io/advancesystems-test-b7/contact.html                    |
 
+  @AS-15
+  Scenario: Verify social media buttons displayed in the footer section
+    Then verify the social media buttons are displayed:
+      | Facebook |
+      | Twitter  |
+      | Instagram|
+      | LinkedIn |
 
-
-
+  @AS-16
+  Scenario: Verify email input field with a place holder is displayed in Newsletter section
+    Then verify email input field with a place holder is displayed
