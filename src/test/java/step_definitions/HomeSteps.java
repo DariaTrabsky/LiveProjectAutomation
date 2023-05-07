@@ -76,6 +76,28 @@ public class HomeSteps {
             }
         }
     }
+
+    @Then("verify the social media buttons are displayed:")
+    public void verifyTheSocialMediaButtonsAreDisplayed(List<String> socialMediaBtn) {
+        for (String each : socialMediaBtn){
+            switch (each){
+                case "Facebook":
+                    BrowserUtils.isDisplayed(page.facebookBtn);
+                    break;
+                case "Twitter":
+                    BrowserUtils.isDisplayed(page.twitterBtn);
+                    break;
+                case "Instagram":
+                    BrowserUtils.isDisplayed(page.instagramBtn);
+                    break;
+                case "LinkedIn":
+                    BrowserUtils.isDisplayed(page.linkedin);
+                    break;
+                default:
+                    System.out.println("Invalid buttons");
+            }
+        }
+    }
 }
 
 
