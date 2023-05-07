@@ -42,4 +42,16 @@ public class HomePage {
     @FindBy(xpath = "//a[text()='Join Now']")
     public WebElement joinNowBtn;
 
+    @FindBy(xpath = "//span[@class='fa fa-facebook']")
+    public WebElement facebookBtn;
+
+    @FindBy(xpath = "//span[@class='fa fa-twitter']")
+    public WebElement twitterBtn;
+
+    @FindBy(xpath = "//a[@target='_blank']//span[@class='fa fa-instagram']")
+    public WebElement instagramBtn;
+
+    @FindBy(xpath = "//span[@class='fa fa-linkedin']")
+    public WebElement linkedin;
+
 }
