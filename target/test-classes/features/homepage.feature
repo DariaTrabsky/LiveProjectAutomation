@@ -24,3 +24,12 @@ Feature: Homepage Scenarios
       | Spanish     |
       | French      |
 
+  @AS-15
+  Scenario: Verify social media buttons displayed in the footer section
+    Then verify the social media buttons are displayed:
+    | Facebook |
+    | Twitter  |
+    | Instagram|
+    | LinkedIn |
+
+
