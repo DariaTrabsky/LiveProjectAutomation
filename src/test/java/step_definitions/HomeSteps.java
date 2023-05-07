@@ -79,6 +79,57 @@ public class HomeSteps {
         }
     }
 
+    @Then("verify the social media buttons are displayed:")
+    public void verifyTheSocialMediaButtonsAreDisplayed(List<String> socialMediaBtn) {
+        for (String each : socialMediaBtn) {
+            switch (each) {
+                case "Facebook":
+                    BrowserUtils.isDisplayed(page.facebookFtBtn);
+                    break;
+                case "Twitter":
+                    BrowserUtils.isDisplayed(page.twitterFtBtn);
+                    break;
+                case "Instagram":
+                    BrowserUtils.isDisplayed(page.instagramFtBtn);
+                    break;
+                case "LinkedIn":
+                    BrowserUtils.isDisplayed(page.linkedinFtBtn);
+                    break;
+                default:
+                    System.out.println("Invalid buttons");
+            }
+        }
+    }
+
+    @Then("Verify the testimonials header is {string}")
+    public void verifyTheTestimonialsHeaderIs(String expectedTestimonialsHeader) {
+        BrowserUtils.assertEquals(BrowserUtils.getText(page.testimonialsHeader), expectedTestimonialsHeader);
+
+    }
+
+    @And("Verify there are multiple testimonials messages under Testimonials Section")
+    public void verifyThereAreMultipleTestimonialsMessagesUnderTestimonialsSection() {
+
+        BrowserUtils.assertTrue(page.testimonialsMsg.size() > 1);
+        BrowserUtils.assertTrue(page.testimonialsName.size() > 1);
+        BrowserUtils.assertTrue(page.testimonialsState.size() > 1);
+
+    }
+
+    @And("Verify there are people names and states under Testimonials Section")
+    public void verifyThereArePeopleNamesAndStatesUnderTestimonialsSection() {
+
+        for (WebElement msg : page.testimonialsMsg) {
+            if (msg.isDisplayed()) BrowserUtils.assertTrue(true);
+        }
+        for (WebElement name : page.testimonialsName) {
+            if (name.isDisplayed()) BrowserUtils.assertTrue(true);
+        }
+        for (WebElement state : page.testimonialsState) {
+            if (state.isDisplayed()) BrowserUtils.assertTrue(true);
+        }
+    }
+
     @And("verify {string} buttons are displayed on the main page")
     public void verifyButtonsAreDisplayedOnTheMainPage(String socialMedia) {
         switch (socialMedia) {
