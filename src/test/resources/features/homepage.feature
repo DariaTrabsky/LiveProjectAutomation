@@ -1,7 +1,7 @@
 @home
 Feature: Homepage Scenarios
 
-  @AS-3
+  @AS-3 @majid
   Scenario: Verify our address and phone number under the main navigation bar on top of the page is displayed.
     Then the following should be displayed:
       | address1    | 10090 Main Street |
@@ -68,6 +68,12 @@ Feature: Homepage Scenarios
       | Twitter  |
       | Instagram|
       | LinkedIn |
+
+  @AS-11 @majid
+  Scenario: Display Testimonials Section
+    Then Verify the testimonials header is "Words from our Clients"
+    And Verify there are multiple testimonials messages under Testimonials Section
+    And Verify there are people names and states under Testimonials Section
 
   @AS-16
   Scenario: Verify email input field with a place holder is displayed in Newsletter section
