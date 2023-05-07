@@ -1,3 +1,5 @@
 /.idea
 /target
-AutomationBDD-B7.iml
+target
+/CukesRunner.java
+LiveProjectAutomation.iml
