@@ -17,4 +17,30 @@ public class HomePage {
     @FindBy(xpath ="//strong[text()='+1 703-831-3227']")
     public WebElement phoneNumber;
 
+    @FindBy(xpath = "(//a[text()='Home'])[2]")
+    public WebElement homeSecNavBarBtn;
+
+    @FindBy(xpath ="(//a[text()='About Us'])[2]")
+    public WebElement aboutUsSecNavBtn;
+
+    @FindBy(xpath = "(//a[text()='Services'])[2]" )
+    public WebElement servicesSecNavBtn;
+
+    @FindBy(xpath = "(//a[text()='Clients'])[2]")
+    public WebElement clientsSecNavBtn;
+
+    @FindBy(xpath = "(//a[text()='Join Us'])[2]")
+    public WebElement joinUsSecNavBtn;
+
+    @FindBy(xpath = "(//a[text()='Contact Us'])[2]")
+    public WebElement contactUsSecNavBtn;
+
+    @FindBy(xpath = "//div[@class='container clearfix']")
+    public WebElement secondaryNavigationBar;
+
+    @FindBy(xpath = "//span[@class='icon icon-interface']")
+    public WebElement scrollIntoView;
+
+
+
 }
