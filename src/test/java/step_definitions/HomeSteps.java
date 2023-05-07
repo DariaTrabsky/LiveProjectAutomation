@@ -79,36 +79,6 @@ public class HomeSteps {
         }
     }
 
-//    @Then("Verify when user clicks on  Facebook, Twitter, Instagram, and LinkedIn buttons, each social media button takes you to the corresponding page")
-//    public void verifyWhenUserClicksOnFacebookTwitterInstagramAndLinkedInButtonsEachSocialMediaButtonTakesYouToTheCorrespondingPage() {
-//        List<WebElement> socialMediaButtons = page.socialMediaButtons;
-//        for (int i = 0; i < socialMediaButtons.size(); i++) {
-//            String href = socialMediaButtons.get(i).getAttribute("href");
-//            System.out.println("Link #" + i + ": " + href); // Print the link URL
-//            socialMediaButtons.get(i).click();
-//           // BrowserUtils.switchToNewWindow();
-//            String title = BrowserUtils.getDriver().getTitle();
-//            switch (href) {
-//                case "https://www.facebook.com/":
-//                    Assert.assertTrue(title.contains("Facebook"));
-//                    BrowserUtils.switchToParentWindow();
-//                    break;
-//                case "https://twitter.com":
-//                    Assert.assertTrue(title.contains("twitter"));
-//                    break;
-//                case "https://instagram.com":
-//                    Assert.assertTrue(title.contains("instagram"));
-//                    break;
-//                case "https://linkedin.com":
-//                    Assert.assertTrue(title.contains("linkedin"));
-//                    break;
-//                default:
-//                    Assert.fail("Unknown social media link");
-//            }
-//        }
-//    }
-//}
-
     @And("verify {string} buttons are displayed on the main page")
     public void verifyButtonsAreDisplayedOnTheMainPage(String socialMedia) {
         switch (socialMedia) {
