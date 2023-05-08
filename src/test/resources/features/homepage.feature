@@ -56,6 +56,11 @@ Feature: Homepage Scenarios
       | Join Us           | https://tla-batch7.github.io/advancesystems-test-b7/joinUs.html                     |
       | Contact Us        | https://tla-batch7.github.io/advancesystems-test-b7/contact.html                    |
 
+
+  @AS-12
+  Scenario: Verify list of companies above the footer is displayed
+    Then verify list of companies is displayed
+
   @AS-15
   Scenario: Verify social media buttons displayed in the footer section
     Then verify the social media buttons are displayed:

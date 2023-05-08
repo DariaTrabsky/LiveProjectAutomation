@@ -68,3 +68,8 @@ Feature: Homepage Scenarios
   @AS-16
   Scenario: Verify email input field with a place holder is displayed in Newsletter section
     Then verify email input field with a place holder is displayed
+
+  @AS-12
+  Scenario: Verify list of companies above the footer is displayed
+    Then verify list of companies is displayed
+
