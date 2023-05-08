@@ -22,6 +22,7 @@ public class HomeSteps {
 
     @Then("the following should be displayed:")
     public void i_should_see_header(Map<String, String> expectedValues) {
+
         BrowserUtils.assertEquals(expectedValues.get("address1"), page.addressLine1.getText());
         BrowserUtils.isDisplayed(page.addressLine1);
 
@@ -50,40 +51,38 @@ public class HomeSteps {
 
     @And("I click on secondary navigation bar button {string}")
     public void iClickOnNavigationBarButton(String navbtn) {
-            switch(navbtn.trim()){
-                case "Home":
-                    BrowserUtils.click(page.homeSecNavBarBtn);
-                    break;
-                case "About Us":
-                    BrowserUtils.click(page.aboutUsSecNavBtn);
-                    break;
-                case "Services":
-                    BrowserUtils.click(page.servicesSecNavBtn);
-                    break;
-                case "Clients":
-                    BrowserUtils.click(page.clientsSecNavBtn);
-                    break;
-                case "Join Us":
-                    BrowserUtils.click(page.joinUsSecNavBtn);
-                    break;
-                case "Contact Us":
-                    BrowserUtils.click(page.contactUsSecNavBtn);
-                    break;
-                default:
-                    System.out.println("Invalid Link");
-                    Assert.fail();
+        switch (navbtn.trim()) {
+            case "Home":
+                BrowserUtils.click(page.homeSecNavBarBtn);
+                break;
+            case "About Us":
+                BrowserUtils.click(page.aboutUsSecNavBtn);
+                break;
+            case "Services":
+                BrowserUtils.click(page.servicesSecNavBtn);
+                break;
+            case "Clients":
+                BrowserUtils.click(page.clientsSecNavBtn);
+                break;
+            case "Join Us":
+                BrowserUtils.click(page.joinUsSecNavBtn);
+                break;
+            case "Contact Us":
+                BrowserUtils.click(page.contactUsSecNavBtn);
+                break;
+            default:
+                System.out.println("Invalid Link");
+                Assert.fail();
 
-
-            }
 
         }
+
+    }
 
     @When("I scroll down the page")
     public void iScrollDownThePage() {
         BrowserUtils.moveIntoView(page.scrollIntoView);
     }
-
-
 
 
     @Given("I am on the {string} page")
@@ -148,6 +147,7 @@ public class HomeSteps {
 
     @Then("Verify the testimonials header is {string}")
     public void verifyTheTestimonialsHeaderIs(String expectedTestimonialsHeader) {
+        BrowserUtils.waitForElementVisibility(page.testimonialsHeader);
         BrowserUtils.assertEquals(BrowserUtils.getText(page.testimonialsHeader), expectedTestimonialsHeader);
 
     }
@@ -155,7 +155,11 @@ public class HomeSteps {
     @And("Verify there are multiple testimonials messages under Testimonials Section")
     public void verifyThereAreMultipleTestimonialsMessagesUnderTestimonialsSection() {
 
+        BrowserUtils.clickWithJs(page.testimonialsArrow);
+        BrowserUtils.waitForElementClickability(page.testimonialsActivePerson);
         BrowserUtils.assertTrue(page.testimonialsMsg.size() > 1);
+        BrowserUtils.clickWithJs(page.testimonialsArrow);
+        BrowserUtils.waitForElementClickability(page.testimonialsActivePerson);
         BrowserUtils.assertTrue(page.testimonialsName.size() > 1);
         BrowserUtils.assertTrue(page.testimonialsState.size() > 1);
 
@@ -205,6 +209,7 @@ public class HomeSteps {
                 WebElement facebookTitle = BrowserUtils.getDriver().findElement(By.xpath("//title[contains(text(),'Facebook')]"));
                 BrowserUtils.highlightElement(facebookTitle);
                 break;
+
             case "https://twitter.com/":
                 BrowserUtils.click(page.twitterBtn);
                 String actualUrlTwitter = BrowserUtils.getDriver().getCurrentUrl();
@@ -212,14 +217,15 @@ public class HomeSteps {
                 WebElement twitterTitle = BrowserUtils.getDriver().findElement(By.xpath("//title[contains(text(),'Twitter')]"));
                 BrowserUtils.highlightElement(twitterTitle);
                 break;
+
             case "https://www.instagram.com/":
                 BrowserUtils.click(page.instagramBtn);
                 String actualUrlInstagram = BrowserUtils.getDriver().getCurrentUrl();
                 Assert.assertEquals(expectedUrl, actualUrlInstagram);
                 WebElement instagramTitle = BrowserUtils.getDriver().findElement(By.xpath("//title[contains(text(),'Instagram')]"));
                 BrowserUtils.highlightElement(instagramTitle);
-
                 break;
+
             case "https://www.linkedin.com/":
                 BrowserUtils.click(page.linkedinBtn);
                 String actualUrlLinkedin = BrowserUtils.getDriver().getCurrentUrl();
@@ -227,6 +233,7 @@ public class HomeSteps {
                 WebElement linkedinTitle = BrowserUtils.getDriver().findElement(By.xpath("//title[contains(text(),'LinkedIn')]"));
                 BrowserUtils.highlightElement(linkedinTitle);
                 break;
+
             default:
                 Assert.fail("Unknown social media button");
         }

@@ -106,6 +106,12 @@ public class HomePage {
     @FindBy(xpath = "//section[@class='testimonial-section sp-one parallax-one']//div[@class='designation']")
     public List<WebElement> testimonialsState;
 
+    @FindBy(xpath = "//span[@class='right_arrow icon-arrows']")
+    public WebElement testimonialsArrow;
+
+    @FindBy(xpath = "//div[@class='owl-item active']//div[@class='thumb-item']")
+    public WebElement testimonialsActivePerson;
+
     @FindBy(xpath = "(//div[@class='owl-stage'])[3]")
     public WebElement listOfCompanies;
 

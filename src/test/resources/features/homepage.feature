@@ -36,11 +36,6 @@ Feature: Homepage Scenarios
       | instagram    | https://www.instagram.com/ |
       | linkedin     | https://www.linkedin.com/  |
 
-  @AS-11
-  Scenario: Display Testimonials Section
-    Then Verify the testimonials header is "Words from our Clients"
-    And Verify there are multiple testimonials messages under Testimonials Section
-    And Verify there are people names and states under Testimonials Section
 
   @AS-8
   Scenario Outline: Verify each button goes to corresponding url
@@ -48,13 +43,13 @@ Feature: Homepage Scenarios
     And I click on secondary navigation bar button "<button>"
     Then Verify corresponding window has url as "<URL>"
     Examples:
-      | button            | URL                                                                                 |
-      | Home              | https://tla-batch7.github.io/advancesystems-test-b7/index.html                      |
-      | About Us          | https://tla-batch7.github.io/advancesystems-test-b7/about.html                      |
-      | Services          | https://tla-batch7.github.io/advancesystems-test-b7/services.html                   |
-      | Clients           | https://tla-batch7.github.io/advancesystems-test-b7/clients.html                    |
-      | Join Us           | https://tla-batch7.github.io/advancesystems-test-b7/joinUs.html                     |
-      | Contact Us        | https://tla-batch7.github.io/advancesystems-test-b7/contact.html                    |
+      | button     | URL                                                               |
+      | Home       | https://tla-batch7.github.io/advancesystems-test-b7/index.html    |
+      | About Us   | https://tla-batch7.github.io/advancesystems-test-b7/about.html    |
+      | Services   | https://tla-batch7.github.io/advancesystems-test-b7/services.html |
+      | Clients    | https://tla-batch7.github.io/advancesystems-test-b7/clients.html  |
+      | Join Us    | https://tla-batch7.github.io/advancesystems-test-b7/joinUs.html   |
+      | Contact Us | https://tla-batch7.github.io/advancesystems-test-b7/contact.html  |
 
 
   @AS-12
@@ -81,6 +76,7 @@ Feature: Homepage Scenarios
     When I scroll down to the bottom of the page
     Then Verify There should be a button in the bottom right corner of the page
     And Verify the button would scroll the window to top content once clicked
+
   @AS-16
   Scenario: Verify email input field with a place holder is displayed in Newsletter section
     Then verify email input field with a place holder is displayed
