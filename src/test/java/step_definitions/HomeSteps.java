@@ -232,6 +232,27 @@ public class HomeSteps {
         }
     }
 
+    @When("I scroll down to the bottom of the page")
+    public void iScrollDownToTheBottomOfThePage() {
+        BrowserUtils.moveIntoView(page.linkedinFtBtn);
+
+    }
+
+    @Then("Verify There should be a button in the bottom right corner of the page")
+    public void verifyThereShouldBeAButtonInTheBottomRightCornerOfThePage() {
+        BrowserUtils.isDisplayed(page.moveToTopBtn);
+
+    }
+
+    @And("Verify the button would scroll the window to top content once clicked")
+    public void verifyTheButtonWouldScrollTheWindowToTopContentOnceClicked() {
+        BrowserUtils.waitForElementVisibility(page.moveToTopBtn);
+        BrowserUtils.click(page.moveToTopBtn);
+        BrowserUtils.waitForElementVisibility(page.lookingForJob);
+        BrowserUtils.isDisplayed(page.lookingForJob);
+
+    }
+
     @Then("verify list of companies is displayed")
     public void verifyListOfCompaniesIsDisplayed() {
         BrowserUtils.isDisplayed(page.listOfCompanies2);

@@ -70,7 +70,6 @@ public class HomePage {
     @FindBy(xpath = "//a[text()='Join Now']")
     public WebElement joinNowBtn;
 
-
     @FindBy(xpath = "//div[@class='socail-icon-area']//a")
     public List <WebElement> socialMediaButtons;
 
@@ -82,7 +81,6 @@ public class HomePage {
     public WebElement instagramBtn;
     @FindBy(xpath = "//li/a/i[@class='fa fa-linkedin-square']")
     public WebElement linkedinBtn;
-
 
     @FindBy(xpath = "//span[@class='fa fa-facebook']")
     public WebElement facebookFtBtn;
@@ -115,5 +113,12 @@ public class HomePage {
     public WebElement listOfCompanies2;
     @FindBy(xpath = "//h3[text()='Newsletter']/parent::div/div/form/div/input[@placeholder]")
     public WebElement emailPlaceholderFt;
+
+    @FindBy(xpath = "//span[@class='icon fa fa-arrow-up']")
+    public WebElement moveToTopBtn;
+
+    @FindBy(xpath = "//div[.='Looking for a dream job?']")
+    public WebElement lookingForJob;
+
 
 }

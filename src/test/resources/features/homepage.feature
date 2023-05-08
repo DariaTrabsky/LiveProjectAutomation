@@ -64,10 +64,11 @@ Feature: Homepage Scenarios
   @AS-15
   Scenario: Verify social media buttons displayed in the footer section
     Then verify the social media buttons are displayed:
-      | Facebook |
-      | Twitter  |
-      | Instagram|
-      | LinkedIn |
+      | Facebook  |
+      | Twitter   |
+      | Instagram |
+      | LinkedIn  |
+
 
   @AS-11 @majid
   Scenario: Display Testimonials Section
@@ -75,6 +76,11 @@ Feature: Homepage Scenarios
     And Verify there are multiple testimonials messages under Testimonials Section
     And Verify there are people names and states under Testimonials Section
 
+  @AS-17 @majid
+  Scenario: Move to top button
+    When I scroll down to the bottom of the page
+    Then Verify There should be a button in the bottom right corner of the page
+    And Verify the button would scroll the window to top content once clicked
   @AS-16
   Scenario: Verify email input field with a place holder is displayed in Newsletter section
     Then verify email input field with a place holder is displayed
