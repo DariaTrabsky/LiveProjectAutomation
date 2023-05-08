@@ -231,5 +231,10 @@ public class HomeSteps {
                 Assert.fail("Unknown social media button");
         }
     }
+
+    @Then("verify email input field with a place holder is displayed")
+    public void verifyEmailInputFieldWithAPlaceHolderIsDisplayed() {
+        BrowserUtils.isDisplayed(page.emailPlaceholderFt);
+    }
 }
 
