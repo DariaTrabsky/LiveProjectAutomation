@@ -81,6 +81,25 @@ Feature: Homepage Scenarios
   Scenario: Verify email input field with a place holder is displayed in Newsletter section
     Then verify email input field with a place holder is displayed
 
+  @AS-20
+  Scenario: Retrieve SDET Course Names
+    Given the SDET course endpoint is "https://tla-school-api.herokuapp.com/api/school/programs/sdetcourse"
+    When I send a GET request to the SDET course endpoint
+    Then the response status code should be 200
+    And the response should contain course names with the following properties:
+      | id |
+      | name |
+      | duration |
+
+  Scenario: Retrieve Dev Course Names
+    Given the Dev course endpoint is "https://tla-school-api.herokuapp.com/api/school/programs/devcourse"
+    When I send a GET request to the Dev course endpoint
+    Then the response status code should be 200
+    And the response should contain course names with the following properties:
+      | id |
+      | name |
+      | duration |
+
 
   @AS-14
   Scenario Outline: Verify footer links are displayed and button goes to corresponding URL
