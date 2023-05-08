@@ -70,7 +70,6 @@ public class HomePage {
     @FindBy(xpath = "//a[text()='Join Now']")
     public WebElement joinNowBtn;
 
-
     @FindBy(xpath = "//div[@class='socail-icon-area']//a")
     public List <WebElement> socialMediaButtons;
 
@@ -82,7 +81,6 @@ public class HomePage {
     public WebElement instagramBtn;
     @FindBy(xpath = "//li/a/i[@class='fa fa-linkedin-square']")
     public WebElement linkedinBtn;
-
 
     @FindBy(xpath = "//span[@class='fa fa-facebook']")
     public WebElement facebookFtBtn;
@@ -107,6 +105,12 @@ public class HomePage {
 
     @FindBy(xpath = "//section[@class='testimonial-section sp-one parallax-one']//div[@class='designation']")
     public List<WebElement> testimonialsState;
+
+    @FindBy(xpath = "//span[@class='right_arrow icon-arrows']")
+    public WebElement testimonialsArrow;
+
+    @FindBy(xpath = "//div[@class='owl-item active']//div[@class='thumb-item']")
+    public WebElement testimonialsActivePerson;
 
     @FindBy(xpath = "(//div[@class='owl-stage'])[3]")
     public WebElement listOfCompanies;
@@ -136,5 +140,12 @@ public class HomePage {
 
     @FindBy(xpath = "(//div[@class='row'])[3]")
     public WebElement footerLinksBox;
+
+    @FindBy(xpath = "//span[@class='icon fa fa-arrow-up']")
+    public WebElement moveToTopBtn;
+
+    @FindBy(xpath = "//div[.='Looking for a dream job?']")
+    public WebElement lookingForJob;
+
 
 }

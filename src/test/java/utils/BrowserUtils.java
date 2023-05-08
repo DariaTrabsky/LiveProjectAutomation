@@ -127,6 +127,8 @@ public class BrowserUtils {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOf(element));
     }
+
+
     public static void sleep(int millis) {
         try {
             Thread.sleep(millis);
@@ -136,6 +138,13 @@ public class BrowserUtils {
     }
     public static void moveIntoView(WebElement element){
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);", element);
+    }
+
+    // Click the element using JavaScript
+    public static void clickWithJs(WebElement element){
+        moveIntoView(element);
+        highlightElement(element);
+        ((JavascriptExecutor)driver).executeScript("arguments[0].click();", element);
     }
 
     public static void sendKeys(WebElement element, String inputText){
