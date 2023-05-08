@@ -269,5 +269,80 @@ public class HomeSteps {
     public void verifyEmailInputFieldWithAPlaceHolderIsDisplayed() {
         BrowserUtils.isDisplayed(page.emailPlaceholderFt);
     }
+
+
+    @Then("verify footer {string} buttons are displayed")
+    public void verifyFooterButtonsAreDisplayed(String footerLinks) {
+        switch (footerLinks.trim()) {
+            case "Home":
+                BrowserUtils.isDisplayed(page.footerHomeBtn);
+                break;
+            case "About Us":
+                BrowserUtils.isDisplayed(page.footerAboutUsBtn);
+                break;
+            case "Services":
+                BrowserUtils.isDisplayed(page.footerServicesBtn);
+                break;
+            case "Clients":
+                BrowserUtils.isDisplayed(page.footerClientsBtn);
+                break;
+            case "Join Us":
+                BrowserUtils.isDisplayed(page.footerJoinUsBtn);
+                break;
+            case "Contact Us":
+                BrowserUtils.isDisplayed(page.footerContactUsBtn);
+                break;
+            default:
+                System.out.println("Invalid Link");
+                Assert.fail();
+
+
+        }
+    }
+
+    @Then("verify that when links are clicked, corresponding window has {string}")
+    public void verifyThatWhenLinksAreClickedCorrespondingWindowHas(String anotherUrl) {
+        switch (anotherUrl) {
+            case "https://tla-batch7.github.io/advancesystems-test-b7/index.html":
+                BrowserUtils.click(page.footerHomeBtn);
+                BrowserUtils.switchToNewWindow();
+                BrowserUtils.sleep(3000);
+                BrowserUtils.assertEquals(BrowserUtils.getDriver().getCurrentUrl(), anotherUrl);
+                break;
+            case "https://tla-batch7.github.io/advancesystems-test-b7/about.html":
+                BrowserUtils.click(page.footerAboutUsBtn);
+                BrowserUtils.switchToNewWindow();
+                BrowserUtils.sleep(3000);
+                BrowserUtils.assertEquals(BrowserUtils.getDriver().getCurrentUrl(), anotherUrl);
+                break;
+            case "https://tla-batch7.github.io/advancesystems-test-b7/services.html":
+                BrowserUtils.click(page.footerServicesBtn);
+                BrowserUtils.switchToNewWindow();
+                BrowserUtils.sleep(3000);
+                BrowserUtils.assertEquals(BrowserUtils.getDriver().getCurrentUrl(), anotherUrl);
+                break;
+            case "https://tla-batch7.github.io/advancesystems-test-b7/clients.html":
+                BrowserUtils.click(page.footerClientsBtn);
+                BrowserUtils.switchToNewWindow();
+                BrowserUtils.sleep(3000);
+                BrowserUtils.assertEquals(BrowserUtils.getDriver().getCurrentUrl(), anotherUrl);
+                break;
+            case "https://tla-batch7.github.io/advancesystems-test-b7/joinUs.html":
+                BrowserUtils.click(page.footerJoinUsBtn);
+                BrowserUtils.switchToNewWindow();
+                BrowserUtils.sleep(3000);
+                BrowserUtils.assertEquals(BrowserUtils.getDriver().getCurrentUrl(), anotherUrl);
+                break;
+            case "https://tla-batch7.github.io/advancesystems-test-b7/contact.html":
+                BrowserUtils.click(page.footerContactUsBtn);
+                BrowserUtils.switchToNewWindow();
+                BrowserUtils.sleep(3000);
+                BrowserUtils.assertEquals(BrowserUtils.getDriver().getCurrentUrl(), anotherUrl);
+                break;
+            default:
+                System.out.println("Invalid Link");
+                Assert.fail();
+        }
+    }
 }
 
