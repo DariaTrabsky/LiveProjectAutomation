@@ -116,4 +116,25 @@ public class HomePage {
     @FindBy(xpath = "//h3[text()='Newsletter']/parent::div/div/form/div/input[@placeholder]")
     public WebElement emailPlaceholderFt;
 
+    @FindBy(xpath = "(//i[@class ='fa fa-angle-right'])[1]")
+    public WebElement footerHomeBtn;
+
+    @FindBy(xpath = "(//i[@class ='fa fa-angle-right'])[2]")
+    public WebElement footerAboutUsBtn;
+
+    @FindBy(xpath = "(//i[@class ='fa fa-angle-right'])[3]")
+    public WebElement footerServicesBtn;
+
+    @FindBy(xpath = "(//i[@class ='fa fa-angle-right'])[4]")
+    public WebElement footerClientsBtn;
+
+    @FindBy(xpath = "(//i[@class ='fa fa-angle-right'])[5]")
+    public WebElement footerContactUsBtn;
+
+    @FindBy(xpath = "(//i[@class ='fa fa-angle-right'])[6]")
+    public WebElement footerJoinUsBtn;
+
+    @FindBy(xpath = "(//div[@class='row'])[3]")
+    public WebElement footerLinksBox;
+
 }

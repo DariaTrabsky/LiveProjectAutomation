@@ -42,7 +42,6 @@ Feature: Homepage Scenarios
     And Verify there are multiple testimonials messages under Testimonials Section
     And Verify there are people names and states under Testimonials Section
 
-
   @AS-8
   Scenario Outline: Verify each button goes to corresponding url
     When I scroll down the page
@@ -57,6 +56,11 @@ Feature: Homepage Scenarios
       | Join Us           | https://tla-batch7.github.io/advancesystems-test-b7/joinUs.html                     |
       | Contact Us        | https://tla-batch7.github.io/advancesystems-test-b7/contact.html                    |
 
+
+  @AS-12
+  Scenario: Verify list of companies above the footer is displayed
+    Then verify list of companies is displayed
+
   @AS-15
   Scenario: Verify social media buttons displayed in the footer section
     Then verify the social media buttons are displayed:
@@ -69,7 +73,17 @@ Feature: Homepage Scenarios
   Scenario: Verify email input field with a place holder is displayed in Newsletter section
     Then verify email input field with a place holder is displayed
 
-  @AS-12
-  Scenario: Verify list of companies above the footer is displayed
-    Then verify list of companies is displayed
+
+  @AS-14
+  Scenario Outline: Verify footer links are displayed and button goes to corresponding URL
+    Then verify footer "<links>" buttons are displayed
+    Then verify that when links are clicked, corresponding window has "<url>"
+    Examples:
+      | links             | url                                                                                 |
+      | Home              | https://tla-batch7.github.io/advancesystems-test-b7/index.html                      |
+      | About Us          | https://tla-batch7.github.io/advancesystems-test-b7/about.html                      |
+      | Services          | https://tla-batch7.github.io/advancesystems-test-b7/services.html                   |
+      | Clients           | https://tla-batch7.github.io/advancesystems-test-b7/clients.html                    |
+      | Join Us           | https://tla-batch7.github.io/advancesystems-test-b7/joinUs.html                     |
+      | Contact Us        | https://tla-batch7.github.io/advancesystems-test-b7/contact.html                    |
 
