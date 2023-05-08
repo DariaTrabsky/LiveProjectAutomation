@@ -70,7 +70,6 @@ public class HomePage {
     @FindBy(xpath = "//a[text()='Join Now']")
     public WebElement joinNowBtn;
 
-
     @FindBy(xpath = "//div[@class='socail-icon-area']//a")
     public List <WebElement> socialMediaButtons;
 
@@ -82,7 +81,6 @@ public class HomePage {
     public WebElement instagramBtn;
     @FindBy(xpath = "//li/a/i[@class='fa fa-linkedin-square']")
     public WebElement linkedinBtn;
-
 
     @FindBy(xpath = "//span[@class='fa fa-facebook']")
     public WebElement facebookFtBtn;
@@ -107,5 +105,26 @@ public class HomePage {
 
     @FindBy(xpath = "//section[@class='testimonial-section sp-one parallax-one']//div[@class='designation']")
     public List<WebElement> testimonialsState;
+
+    @FindBy(xpath = "//span[@class='right_arrow icon-arrows']")
+    public WebElement testimonialsArrow;
+
+    @FindBy(xpath = "//div[@class='owl-item active']//div[@class='thumb-item']")
+    public WebElement testimonialsActivePerson;
+
+    @FindBy(xpath = "(//div[@class='owl-stage'])[3]")
+    public WebElement listOfCompanies;
+
+    @FindBy(xpath = "//div[@class='six-item-carousel owl-carousel owl-theme owl-dot-none owl-nav-none owl-loaded owl-drag']")
+    public WebElement listOfCompanies2;
+    @FindBy(xpath = "//h3[text()='Newsletter']/parent::div/div/form/div/input[@placeholder]")
+    public WebElement emailPlaceholderFt;
+
+    @FindBy(xpath = "//span[@class='icon fa fa-arrow-up']")
+    public WebElement moveToTopBtn;
+
+    @FindBy(xpath = "//div[.='Looking for a dream job?']")
+    public WebElement lookingForJob;
+
 
 }
