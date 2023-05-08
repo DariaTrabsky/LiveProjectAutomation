@@ -113,4 +113,7 @@ public class HomePage {
 
     @FindBy(xpath = "//div[@class='six-item-carousel owl-carousel owl-theme owl-dot-none owl-nav-none owl-loaded owl-drag']")
     public WebElement listOfCompanies2;
+    @FindBy(xpath = "//h3[text()='Newsletter']/parent::div/div/form/div/input[@placeholder]")
+    public WebElement emailPlaceholderFt;
+
 }

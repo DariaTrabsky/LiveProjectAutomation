@@ -236,5 +236,10 @@ public class HomeSteps {
     public void verifyListOfCompaniesIsDisplayed() {
         BrowserUtils.isDisplayed(page.listOfCompanies2);
     }
+
+    @Then("verify email input field with a place holder is displayed")
+    public void verifyEmailInputFieldWithAPlaceHolderIsDisplayed() {
+        BrowserUtils.isDisplayed(page.emailPlaceholderFt);
+    }
 }
 

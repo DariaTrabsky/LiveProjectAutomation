@@ -36,20 +36,11 @@ Feature: Homepage Scenarios
       | instagram    | https://www.instagram.com/ |
       | linkedin     | https://www.linkedin.com/  |
 
-  @AS-15
-  Scenario: Verify social media buttons displayed in the footer section
-    Then verify the social media buttons are displayed:
-    | Facebook |
-    | Twitter  |
-    | Instagram|
-    | LinkedIn |
-
   @AS-11
   Scenario: Display Testimonials Section
     Then Verify the testimonials header is "Words from our Clients"
     And Verify there are multiple testimonials messages under Testimonials Section
     And Verify there are people names and states under Testimonials Section
-
 
   @AS-8
   Scenario Outline: Verify each button goes to corresponding url
@@ -70,3 +61,14 @@ Feature: Homepage Scenarios
   Scenario: Verify list of companies above the footer is displayed
     Then verify list of companies is displayed
 
+  @AS-15
+  Scenario: Verify social media buttons displayed in the footer section
+    Then verify the social media buttons are displayed:
+      | Facebook |
+      | Twitter  |
+      | Instagram|
+      | LinkedIn |
+
+  @AS-16
+  Scenario: Verify email input field with a place holder is displayed in Newsletter section
+    Then verify email input field with a place holder is displayed
