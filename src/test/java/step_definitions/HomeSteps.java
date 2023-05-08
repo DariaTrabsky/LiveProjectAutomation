@@ -269,5 +269,11 @@ public class HomeSteps {
     public void verifyEmailInputFieldWithAPlaceHolderIsDisplayed() {
         BrowserUtils.isDisplayed(page.emailPlaceholderFt);
     }
+
+    @Then("verify the text of the place holder is {string}")
+    public void verifyTheTextOfThePlaceHolderIs(String text) {
+        String placeholderValue = page.emailPlaceholderFt.getAttribute("placeholder");
+        BrowserUtils.assertEquals(placeholderValue, text);
+    }
 }
 
