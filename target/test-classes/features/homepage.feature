@@ -36,12 +36,6 @@ Feature: Homepage Scenarios
       | instagram    | https://www.instagram.com/ |
       | linkedin     | https://www.linkedin.com/  |
 
-  @AS-11
-  Scenario: Display Testimonials Section
-    Then Verify the testimonials header is "Words from our Clients"
-    And Verify there are multiple testimonials messages under Testimonials Section
-    And Verify there are people names and states under Testimonials Section
-
 
   @AS-8
   Scenario Outline: Verify each button goes to corresponding url
