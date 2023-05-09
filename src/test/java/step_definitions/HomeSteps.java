@@ -1,6 +1,7 @@
 package step_definitions;
 
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 import pages.HomePage;
 import utils.BrowserUtils;
@@ -34,4 +35,40 @@ public class HomeSteps {
         String actual = BrowserUtils.getDriver().getTitle();
         BrowserUtils.assertEquals(actual,title);
     }
+
+
+    @Then("verify read more button is displayed and takes user to the services page")
+    public void verifyReadMoreButtonIsDisplayedAndTakesUserToTheServicesPage() {
+        BrowserUtils.isDisplayed(page.homePageReadMoreButton);
+
+        BrowserUtils.click(page.homePageReadMoreButton);
+        String expected = "Services";
+        String actual = BrowserUtils.getDriver().getTitle();
+
+        BrowserUtils.assertTrue(actual.contains(expected));
+        BrowserUtils.click(page.header);
+    }
+
+    @Then("verify header is displayed")
+    public void verifyHeaderIsDisplayed() {
+        BrowserUtils.isDisplayed(page.homePageFHeader);
+    }
+
+    @Then("verify description is displayed")
+    public void verifyDescriptionIsDisplayed() {
+        BrowserUtils.isDisplayed(page.homePageDescription);
+    }
+
+    @Then("verify Section content should refresh with new set of header and description")
+    public void verifySectionContentShouldRefreshWithNewSetOfHeaderAndDescription() {
+
+        String firstHeader = BrowserUtils.getText(page.homePageFHeader);
+
+        BrowserUtils.waitForElementVisibility(page.homePageSHeader);
+        String secondHeader = BrowserUtils.getText(page.homePageSHeader);
+
+        Assert.assertNotEquals(firstHeader,secondHeader);
+
+    }
+
 }
