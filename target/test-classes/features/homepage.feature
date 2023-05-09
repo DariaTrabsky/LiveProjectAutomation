@@ -36,12 +36,6 @@ Feature: Homepage Scenarios
       | instagram    | https://www.instagram.com/ |
       | linkedin     | https://www.linkedin.com/  |
 
-  @AS-11
-  Scenario: Display Testimonials Section
-    Then Verify the testimonials header is "Words from our Clients"
-    And Verify there are multiple testimonials messages under Testimonials Section
-    And Verify there are people names and states under Testimonials Section
-
 
   @AS-8
   Scenario Outline: Verify each button goes to corresponding url
@@ -101,4 +95,14 @@ Feature: Homepage Scenarios
       | Clients           | https://tla-batch7.github.io/advancesystems-test-b7/clients.html                    |
       | Join Us           | https://tla-batch7.github.io/advancesystems-test-b7/joinUs.html                     |
       | Contact Us        | https://tla-batch7.github.io/advancesystems-test-b7/contact.html                    |
+
+
+    @AS-13
+    Scenario: Verify contact information is displayed
+      Then verify the following contact information is displayed:
+      | Address |
+      | Phone  |
+      | Email  |
+      | Hours Of Operation |
+
 

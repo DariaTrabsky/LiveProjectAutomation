@@ -350,5 +350,40 @@ public class HomeSteps {
                 Assert.fail();
         }
     }
+
+    @Then("verify the following contact information is displayed:")
+    public void verifyTheFollowingContactInformationIsDisplayed(List<String> footerValues) {
+        for (String each : footerValues) {
+            switch (each) {
+                case "Address":
+                    BrowserUtils.isDisplayed(page.footerAddressInfo);
+                    break;
+                case "Phone":
+                    BrowserUtils.isDisplayed(page.footerPhoneInfo);
+                    break;
+                case "Email":
+                    BrowserUtils.isDisplayed(page.footerEmailInfo);
+                    break;
+                case "Hours Of Operation":
+                    BrowserUtils.isDisplayed(page.footerHoursOfOperationInfo);
+                    break;
+                default:
+                    System.out.println("Invalid contact information");
+            }
+
+        }
+    }
 }
+
+    // @Then("verify contact information is displayed")
+   // public void theFollowingShouldDisplayThisContactInformation() {
+   //    BrowserUtils.isDisplayed(page.footerContactInfo);
+  //      System.out.println(page.footerContactInfo);
+  //     }
+
+
+
+
+
+
 

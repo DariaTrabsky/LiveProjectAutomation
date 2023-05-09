@@ -147,5 +147,20 @@ public class HomePage {
     @FindBy(xpath = "//div[.='Looking for a dream job?']")
     public WebElement lookingForJob;
 
+    @FindBy(xpath = "//span[@class='fa fa-map-marker']")
+    public WebElement footerAddressInfo;
+
+    @FindBy(xpath = "//span[@class='fa fa-phone']")
+    public  WebElement footerPhoneInfo;
+
+    @FindBy(xpath = "(//span[@class='fa fa-envelope'])[1]")
+    public WebElement footerEmailInfo;
+
+    @FindBy(xpath = "//span[@class='fa fa-clock-o']")
+    public WebElement footerHoursOfOperationInfo;
+
+    @FindBy(xpath = "//ul[@class='list-info']")
+    public WebElement footerContactInfo;
+
 
 }
