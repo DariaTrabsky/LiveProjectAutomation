@@ -145,6 +145,7 @@ public class BrowserUtils {
         moveIntoView(element);
         highlightElement(element);
         ((JavascriptExecutor)driver).executeScript("arguments[0].click();", element);
+
     }
 
     public static void sendKeys(WebElement element, String inputText){
