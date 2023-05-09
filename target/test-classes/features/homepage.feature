@@ -86,6 +86,7 @@ Feature: Homepage Scenarios
   @AS-16
   Scenario: Verify email input field with a place holder is displayed in Newsletter section
     Then verify email input field with a place holder is displayed
+    Then verify the text of the place holder is "Email Address..."
 
 
   @AS-14
