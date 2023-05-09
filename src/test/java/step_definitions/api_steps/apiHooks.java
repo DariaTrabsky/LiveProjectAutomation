@@ -1,4 +1,4 @@
-package step_definitions;
+package step_definitions.api_steps;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.restassured.RestAssured;

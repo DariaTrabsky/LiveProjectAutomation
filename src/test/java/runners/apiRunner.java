@@ -12,11 +12,12 @@ import org.junit.runner.RunWith;
                 "json:target/cucumber-reports/cucumber.json",
                 "rerun:target/rerun.txt"
         },
-        features = "src/test/resources",
-        glue = "step_definitions",
+        features = "src/test/resources/api_features",
+        glue = "step_definitions/api_steps",
         stepNotifications = true,
         dryRun = false
-        , tags = "@AS-17"
+        ,tags = "@api"
 )
-public class CukesRunner {
+public class apiRunner {
+
 }
