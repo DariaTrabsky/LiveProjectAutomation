@@ -1,4 +1,5 @@
 /.idea
+.DS_Store
 /target
 target/cucumber-reports/cucumber.json
 target/report.html

@@ -270,6 +270,12 @@ public class HomeSteps {
         BrowserUtils.isDisplayed(page.emailPlaceholderFt);
     }
 
+    @Then("verify the text of the place holder is {string}")
+    public void verifyTheTextOfThePlaceHolderIs(String text) {
+        String placeholderValue = page.emailPlaceholderFt.getAttribute("placeholder");
+        BrowserUtils.assertEquals(placeholderValue, text);
+    }
+
 
     @Then("verify footer {string} buttons are displayed")
     public void verifyFooterButtonsAreDisplayed(String footerLinks) {
