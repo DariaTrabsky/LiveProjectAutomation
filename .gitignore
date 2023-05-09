@@ -1,6 +1,7 @@
 /.idea
 /target
-target
+target/cucumber-reports/cucumber.json
+target/report.html
 /CukesRunner.java
 /ConfigLocal.properties
 LiveProjectAutomation.iml
