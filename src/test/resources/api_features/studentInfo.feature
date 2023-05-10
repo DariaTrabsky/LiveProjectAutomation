@@ -11,4 +11,4 @@ Feature: perform a request for verifying student info
     Then the update should be successful with status code 200
     Then verify the response contains the following fields
       | email | Jonh@api.com |
-      | batch | 2000         |
+      | batch | 1000         |
