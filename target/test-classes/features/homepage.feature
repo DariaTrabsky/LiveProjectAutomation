@@ -96,3 +96,13 @@ Feature: Homepage Scenarios
       | Join Us           | https://tla-batch7.github.io/advancesystems-test-b7/joinUs.html                     |
       | Contact Us        | https://tla-batch7.github.io/advancesystems-test-b7/contact.html                    |
 
+
+    @AS-13
+    Scenario: Verify contact information is displayed
+      Then verify the following contact information is displayed:
+      | Address |
+      | Phone  |
+      | Email  |
+      | Hours Of Operation |
+
+
