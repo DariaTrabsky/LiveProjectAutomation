@@ -11,6 +11,7 @@ Feature: practice api
       | name     |
       | duration |
 
+  @AS-20
   Scenario: Retrieve Devs Course Names
     Given the "Dev" course endpoint is "https://tla-school-api.herokuapp.com/api/school/programs/devcourse"
     When I send a GET request to the SDET course endpoint
