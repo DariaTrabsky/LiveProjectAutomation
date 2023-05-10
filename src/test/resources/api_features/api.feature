@@ -20,6 +20,14 @@ Feature: perform a request for verifying course data for SDET and Dev
       | name     |
       | duration |
 
+  @AS-23
+  Scenario: Adding a new student
+    Given I have the following student details
+      | batch | firstName | lastName | email                   |
+      | 7     | John      | Doe      | john.doe@tlastudent.com |
+    When I perform a POST request to add the student
+    Then the student should be successfully added to the database
+
   @AS-22a
   Scenario: Deleting existing Dev course from db
     Given I perform a POST request to "Dev" endpoint "https://tla-school-api.herokuapp.com/api/school/programs/devcourse"
