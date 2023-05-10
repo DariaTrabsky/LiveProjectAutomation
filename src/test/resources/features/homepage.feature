@@ -82,7 +82,6 @@ Feature: Homepage Scenarios
     Then verify email input field with a place holder is displayed
     Then verify the text of the place holder is "Email Address..."
 
-
   @AS-14
   Scenario Outline: Verify footer links are displayed and button goes to corresponding URL
     Then verify footer "<links>" buttons are displayed
@@ -95,7 +94,6 @@ Feature: Homepage Scenarios
       | Clients           | https://tla-batch7.github.io/advancesystems-test-b7/clients.html                    |
       | Join Us           | https://tla-batch7.github.io/advancesystems-test-b7/joinUs.html                     |
       | Contact Us        | https://tla-batch7.github.io/advancesystems-test-b7/contact.html                    |
-
 
     @AS-13
     Scenario: Verify contact information is displayed
