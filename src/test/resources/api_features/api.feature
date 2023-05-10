@@ -1,5 +1,5 @@
 @api
-Feature: practice api
+Feature: perform a request for verifying course data for SDET and Dev
 
   @AS-20
   Scenario: Retrieve SDET Course Names
@@ -19,4 +19,22 @@ Feature: practice api
       | id       |
       | name     |
       | duration |
+
+  @AS-22a
+  Scenario: Deleting existing Dev course from db
+    Given I perform a POST request to "Dev" endpoint "https://tla-school-api.herokuapp.com/api/school/programs/devcourse"
+    And I retrieve a course name
+    When To delete an existing, I perform a DELETE request to "https://tla-school-api.herokuapp.com/api/school/resources/students" using course name parameter
+    Then the delete should be successful with status code 200
+    Then verify "course name" does not exist in response body
+
+  @AS-22b
+  Scenario: Deleting existing SDET course from db
+    Given I perform a POST request to "SDET" endpoint "https://tla-school-api.herokuapp.com/api/school/programs/devcourse"
+    And I retrieve a course name
+    When To delete an existing, I perform a DELETE request to "https://tla-school-api.herokuapp.com/api/school/resources/students" using course name parameter
+    Then the delete should be successful with status code 200
+    Then verify "course name test" does not exist in response body
+
+
 
