@@ -12,10 +12,15 @@ import org.junit.Assert;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class Api_StepDefinitions {
     Response response;
+    Response postResponse;
+    Response deleteResponse;
+    String courseName;
+    private RequestSpecification request;
     HashMap<String, String> actualFields;
     HashMap<String, String> actualValues;
     private String endpoint;
@@ -50,6 +55,66 @@ public class Api_StepDefinitions {
 
         }
 
+    }
+
+    @Given("I have the following student details")
+    public void iHaveTheFollowingStudentDetails(List<Map<String, Object>> data) {
+
+        Object batch = data.get(0).get("batch");
+        Object firstName = data.get(0).get("firstName");
+        Object lastName = data.get(0).get("lastName");
+        Object email = data.get(0).get("email");
+
+        System.out.println("Creating student with the following details:");
+        System.out.println("Batch Name: " + batch);
+        System.out.println("First Name: " + firstName);
+        System.out.println("Last Name: " + lastName);
+        System.out.println("Email: " + email);
+
+        String jsonPayload = "{\"batch\":\"" + batch + "\",\"firstName\":\"" + firstName + "\",\"lastName\":\"" + lastName + "\",\"email\":\"" + email + "\"}";
+        request = RestAssured.given()
+        .header("Content-Type", "application/json")
+        .body(jsonPayload);
+
+    }
+    @When("I perform a POST request to add the student")
+    public void iPerformPOSTRequestToAddTheStudent() {
+        response = request.post("https://tla-school-api.herokuapp.com/api/school/resources/students");
+    }
+
+    @Then("the student should be successfully added to the database")
+    public void theStudentShouldBeSuccessfullyAddedToTheDatabase() {
+        response = response.then().log().all().extract().response();
+        int statusCode = response.getStatusCode();
+        Assert.assertEquals(200, statusCode);
+    }
+
+
+    @When("I send a POST request to the course endpoint")
+    public void iSendAPOSTRequestToTheSDETCourseEndpoint() {
+        RequestSpecification request = RestAssured.given()
+                .header("Content-Type", "application/json")
+                .body("{\"duration\": \"1000 days\", \"name\": \"Course New\"}");
+
+        postResponse = request.post(endpoint).then().log().all().extract().response();
+        System.out.println(endpoint);
+    }
+
+    @Given("I retrieve a course name")
+    public void retrieveCourseName() {
+        courseName = postResponse.jsonPath().getString("data.name");
+        System.out.println(courseName);
+    }
+
+    @When("To delete an existing, I perform a DELETE request using course name parameter")
+    public void performDELETERequest() {
+        RequestSpecification request = RestAssured.given().queryParam("name", courseName);
+        deleteResponse = request.delete(endpoint);
+    }
+
+    @Then("the delete should be successful with status code {int}")
+    public void verifyStatusCode(int statusCode) {
+        Assert.assertEquals(statusCode, deleteResponse.getStatusCode());
     }
 
 }

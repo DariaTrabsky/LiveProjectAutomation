@@ -11,6 +11,15 @@ Feature: perform a request for verifying course data for SDET and Dev
       | name     |
       | duration |
 
+  Scenario: Retrieve Devs Course Names
+    Given the "Dev" course endpoint is "https://tla-school-api.herokuapp.com/api/school/programs/devcourse"
+    When I send a GET request to the SDET course endpoint
+    Then the response status code is 200
+    And the response body contains the following fields:
+      | id       |
+      | name     |
+      | duration |
+
   @AS-23
   Scenario: Adding a new student
     Given I have the following student details
