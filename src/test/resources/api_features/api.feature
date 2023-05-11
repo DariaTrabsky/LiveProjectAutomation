@@ -31,7 +31,7 @@ Feature: perform a request for verifying course data for SDET and Dev
 
   @AS-22
   Scenario: Deleting existing Dev course from db
-    Given the "Dev" course endpoint is "https://tla-school-api.herokuapp.com/api/school/programs/devcourse"
+    Given the "Dev" course endpoint is "https://tla-school-api.herokuapp.com/api/school/programs/sdetcourse"
     Given  I send a POST request to the course endpoint
     And I retrieve a course name
     When To delete an existing, I perform a DELETE request using course name parameter

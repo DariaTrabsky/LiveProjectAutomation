@@ -9,6 +9,8 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.junit.Assert;
+import utils.BrowserUtils;
+import utils.CucumbersLogUtils;
 
 import java.util.HashMap;
 import java.util.List;
@@ -74,6 +76,8 @@ public class Api_StepDefinitions {
         .header("Content-Type", "application/json")
         .body(jsonPayload);
 
+
+
     }
     @When("I perform a POST request to add the student")
     public void iPerformPOSTRequestToAddTheStudent() {
@@ -83,8 +87,10 @@ public class Api_StepDefinitions {
     @Then("the student should be successfully added to the database")
     public void theStudentShouldBeSuccessfullyAddedToTheDatabase() {
         response = response.then().log().all().extract().response();
+        CucumbersLogUtils.logInfo(response.asPrettyString(),false);
         int statusCode = response.getStatusCode();
         Assert.assertEquals(200, statusCode);
+
     }
 
 
@@ -96,6 +102,7 @@ public class Api_StepDefinitions {
 
         postResponse = request.post(endpoint).then().log().all().extract().response();
         System.out.println(endpoint);
+        CucumbersLogUtils.logInfo(postResponse.asPrettyString(),false);
     }
 
     @Given("I retrieve a course name")
