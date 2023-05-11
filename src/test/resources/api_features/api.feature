@@ -1,4 +1,4 @@
-@apiCourse
+@api
 Feature: perform a request for verifying course data for SDET and Dev
 
   @AS-20

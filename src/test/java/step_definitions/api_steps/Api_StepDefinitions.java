@@ -21,8 +21,6 @@ public class Api_StepDefinitions {
     Response deleteResponse;
     String courseName;
     private RequestSpecification request;
-    HashMap<String, String> actualFields;
-    HashMap<String, String> actualValues;
     private String endpoint;
     @Given("the {string} course endpoint is {string}")
     public void theSDETCourseEndpointIs(String courseType, String endpoint) {
