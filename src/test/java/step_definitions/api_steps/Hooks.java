@@ -1,15 +1,17 @@
 package step_definitions.api_steps;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import utils.ConfigReader;
+import utils.CucumbersLogUtils;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class apiHooks {
+public class Hooks {
     private static String token;
 
     public static String getToken() {
@@ -17,11 +19,13 @@ public class apiHooks {
     }
 
     public static void setToken(String token) {
-        apiHooks.token = token;
+        Hooks.token = token;
     }
 
-    @Before("@token")
-    public static void retrieveToken() {
+    @Before
+    public static void retrieveToken(Scenario scenario) {
+        CucumbersLogUtils.initScenario(scenario);
+
         RestAssured.baseURI = "https://api.octoperf.com";
 
         Map<String, Object> map = new HashMap<String, Object>();
@@ -39,7 +43,7 @@ public class apiHooks {
                 .response();
         token = response.jsonPath().getString("token");
         if (token != null) {
-            apiHooks.setToken(token);
+            Hooks.setToken(token);
             System.out.println("Token retrieved: " + token);
         } else {
             System.out.println("Failed to retrieve token");
@@ -49,6 +53,6 @@ public class apiHooks {
 
     @After("@token")
     public void clearToken() {
-        apiHooks.setToken(null);
+        Hooks.setToken(null);
     }
 }
