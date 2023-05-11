@@ -5,18 +5,17 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.junit.Assert;
 
 import java.util.HashMap;
-import java.util.Map;
 import java.util.List;
 
 
 public class Api_StepDefinitions {
     Response response;
-    private RequestSpecification request;
     HashMap<String, String> actualFields;
     HashMap<String, String> actualValues;
     private String endpoint;
@@ -53,35 +52,4 @@ public class Api_StepDefinitions {
 
     }
 
-    @Given("I have the following student details")
-    public void iHaveTheFollowingStudentDetails(List<Map<String, Object>> data) {
-
-        Object batch = data.get(0).get("batch");
-        Object firstName = data.get(0).get("firstName");
-        Object lastName = data.get(0).get("lastName");
-        Object email = data.get(0).get("email");
-
-        System.out.println("Creating student with the following details:");
-        System.out.println("Batch Name: " + batch);
-        System.out.println("First Name: " + firstName);
-        System.out.println("Last Name: " + lastName);
-        System.out.println("Email: " + email);
-
-        String jsonPayload = "{\"batch\":\"" + batch + "\",\"firstName\":\"" + firstName + "\",\"lastName\":\"" + lastName + "\",\"email\":\"" + email + "\"}";
-        request = RestAssured.given()
-        .header("Content-Type", "application/json")
-        .body(jsonPayload);
-
-    }
-    @When("I perform a POST request to add the student")
-    public void iPerformPOSTRequestToAddTheStudent() {
-        response = request.post("https://tla-school-api.herokuapp.com/api/school/resources/students");
-    }
-
-    @Then("the student should be successfully added to the database")
-    public void theStudentShouldBeSuccessfullyAddedToTheDatabase() {
-        response = response.then().log().all().extract().response();
-        int statusCode = response.getStatusCode();
-        Assert.assertEquals(200, statusCode);
-    }
 }
