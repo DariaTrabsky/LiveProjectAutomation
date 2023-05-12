@@ -123,25 +123,55 @@ public class HomeSteps {
         }
     }
 
-    @Then("verify the social media buttons are displayed:")
-    public void verifyTheSocialMediaButtonsAreDisplayed(List<String> socialMediaBtn) {
-        for (String each : socialMediaBtn) {
-            switch (each) {
-                case "Facebook":
-                    BrowserUtils.isDisplayed(page.facebookFtBtn);
-                    break;
-                case "Twitter":
-                    BrowserUtils.isDisplayed(page.twitterFtBtn);
-                    break;
-                case "Instagram":
-                    BrowserUtils.isDisplayed(page.instagramFtBtn);
-                    break;
-                case "LinkedIn":
-                    BrowserUtils.isDisplayed(page.linkedinFtBtn);
-                    break;
-                default:
-                    System.out.println("Invalid buttons");
-            }
+    @And("verify {string} footer buttons are displayed on the main page")
+    public void verifyButtonsFooterAreDisplayedOnTheMainPage(String socialMedia) {
+        switch (socialMedia) {
+            case "facebook":
+                BrowserUtils.isDisplayed(page.facebookFtBtn);
+                break;
+            case "twitter":
+                BrowserUtils.isDisplayed(page.twitterFtBtn);
+                break;
+            case "instagram":
+                BrowserUtils.isDisplayed(page.instagramFtBtn);
+                break;
+            case "linkedin":
+                BrowserUtils.isDisplayed(page.linkedinFtBtn);
+                break;
+            default:
+                Assert.fail("Unknown social media button");
+        }
+    }
+
+    @Then("verify when media footer button is clicked user gets redirected to the {string} page")
+    public void verifyWhenMediaButtonFooterIsClickedUserGetsRedirectedToThePage(String expectedUrl){
+        switch (expectedUrl) {
+            case "https://www.facebook.com/":
+                BrowserUtils.click(page.facebookFtBtn);
+                BrowserUtils.switchToNewWindow();
+                BrowserUtils.assertEquals(expectedUrl, BrowserUtils.getDriver().getCurrentUrl());
+                break;
+
+            case "https://twitter.com/":
+                BrowserUtils.click(page.twitterFtBtn);
+                BrowserUtils.switchToNewWindow();
+                BrowserUtils.assertEquals(expectedUrl, BrowserUtils.getDriver().getCurrentUrl());
+                break;
+
+            case "https://www.instagram.com/":
+                BrowserUtils.click(page.instagramFtBtn);
+                BrowserUtils.switchToNewWindow();
+                BrowserUtils.assertEquals(expectedUrl, BrowserUtils.getDriver().getCurrentUrl());
+                break;
+
+            case "https://www.linkedin.com/":
+                BrowserUtils.click(page.linkedinFtBtn);
+                BrowserUtils.switchToNewWindow();
+                BrowserUtils.assertEquals(expectedUrl, BrowserUtils.getDriver().getCurrentUrl());
+                break;
+
+            default:
+                Assert.fail("Unknown social media button");
         }
     }
 
