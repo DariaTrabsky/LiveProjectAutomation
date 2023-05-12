@@ -144,36 +144,33 @@ public class HomeSteps {
     }
 
     @Then("verify when media footer button is clicked user gets redirected to the {string} page")
-    public void verifyWhenMediaButtonFooterIsClickedUserGetsRedirectedToThePage(String expectedUrl){
+    public void verifyWhenMediaButtonFooterIsClickedUserGetsRedirectedToThePage(String expectedUrl) {
+        WebElement webElement = null;
         switch (expectedUrl) {
             case "https://www.facebook.com/":
-                BrowserUtils.click(page.facebookFtBtn);
-                BrowserUtils.switchToNewWindow();
-                BrowserUtils.assertEquals(expectedUrl, BrowserUtils.getDriver().getCurrentUrl());
+                webElement = page.facebookFtBtn;
                 break;
 
             case "https://twitter.com/":
-                BrowserUtils.click(page.twitterFtBtn);
-                BrowserUtils.switchToNewWindow();
-                BrowserUtils.assertEquals(expectedUrl, BrowserUtils.getDriver().getCurrentUrl());
+                webElement = page.twitterFtBtn;
                 break;
 
             case "https://www.instagram.com/":
-                BrowserUtils.click(page.instagramFtBtn);
-                BrowserUtils.switchToNewWindow();
-                BrowserUtils.assertEquals(expectedUrl, BrowserUtils.getDriver().getCurrentUrl());
+                webElement = page.instagramFtBtn;
                 break;
 
             case "https://www.linkedin.com/":
-                BrowserUtils.click(page.linkedinFtBtn);
-                BrowserUtils.switchToNewWindow();
-                BrowserUtils.assertEquals(expectedUrl, BrowserUtils.getDriver().getCurrentUrl());
+                webElement = page.linkedinFtBtn;
                 break;
 
             default:
                 Assert.fail("Unknown social media button");
         }
+        BrowserUtils.click(webElement);
+        BrowserUtils.switchToNewWindow();
+        BrowserUtils.assertEquals(expectedUrl, BrowserUtils.getDriver().getCurrentUrl());
     }
+
 
     @Then("Verify the testimonials header is {string}")
     public void verifyTheTestimonialsHeaderIs(String expectedTestimonialsHeader) {
@@ -404,12 +401,6 @@ public class HomeSteps {
         }
     }
 }
-
-    // @Then("verify contact information is displayed")
-   // public void theFollowingShouldDisplayThisContactInformation() {
-   //    BrowserUtils.isDisplayed(page.footerContactInfo);
-  //      System.out.println(page.footerContactInfo);
-  //     }
 
 
 
