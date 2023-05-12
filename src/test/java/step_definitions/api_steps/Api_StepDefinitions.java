@@ -94,27 +94,26 @@ public class Api_StepDefinitions {
     }
 
 
-    @When("I send a POST request to the course endpoint")
-    public void iSendAPOSTRequestToTheSDETCourseEndpoint() {
+    @Given("I send a POST request to the course endpoint with following fields")
+    public void sendPOSTRequest(Map<String, String> fields) {
+        String duration = fields.get("duration");
+        String name = fields.get("name");
         RequestSpecification request = RestAssured.given()
                 .header("Content-Type", "application/json")
-                .body("{\"duration\": \"1000 days\", \"name\": \"Course New\"}");
+                .body("{ \"duration\": \"" + duration + "\", \"name\": \"" + name + "\" }");
 
         postResponse = request.post(endpoint).then().log().all().extract().response();
         System.out.println(endpoint);
         CucumbersLogUtils.logInfo(postResponse.asPrettyString(),false);
-    }
-
-    @Given("I retrieve a course name")
-    public void retrieveCourseName() {
         courseName = postResponse.jsonPath().getString("data.name");
         System.out.println(courseName);
     }
 
-    @When("To delete an existing, I perform a DELETE request using course name parameter")
+    @When("I perform a DELETE request using course name parameter")
     public void performDELETERequest() {
         RequestSpecification request = RestAssured.given().queryParam("name", courseName);
         deleteResponse = request.delete(endpoint);
+        System.out.println(endpoint);
     }
 
     @Then("the delete should be successful with status code {int}")

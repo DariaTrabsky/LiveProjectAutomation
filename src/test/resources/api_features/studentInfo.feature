@@ -1,14 +1,21 @@
-@studentInfo
+@studentInfo @api
 Feature: perform a request for verifying student info
 
   Background: Get key to use in any other request
 
   @AS-24
   Scenario: Update an existing student by ID
-    Given I perform a POST request to "https://tla-school-api.herokuapp.com/api/school/resources/students" to create new student info
-    And I retrieve student id
-    When To Update an existing, I perform a PUT request to "https://tla-school-api.herokuapp.com/api/school/resources/students" using id parameter
-    Then the update should be successful with status code 200
-    Then verify the response contains the following fields
-      | email | Jonh@api.com |
-      | batch | 1000         |
+    Given I perform a POST request to create new student info with following fields
+      | firstName | John         |
+      | lastName  | Doe          |
+      | batch     | 0            |
+      | email     | api@test.com |
+    When I perform a PUT request using id parameter to update the following fields
+      | batch | 777            |
+      | email | Johny@test.com |
+    Then verify the update should be successful with status code 200
+    When I send a GET request
+    Then verify the response body contains the following fields
+      | 777            |
+      | Johny@test.com |
+
