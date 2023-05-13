@@ -1,4 +1,4 @@
-@api
+@CourseApi @api
 Feature: perform a request for verifying course data for SDET and Dev
 
   @AS-20
@@ -31,18 +31,20 @@ Feature: perform a request for verifying course data for SDET and Dev
 
   @AS-22
   Scenario: Deleting existing Dev course from db
-    Given the "Dev" course endpoint is "https://tla-school-api.herokuapp.com/api/school/programs/sdetcourse"
-    Given  I send a POST request to the course endpoint
-    And I retrieve a course name
-    When To delete an existing, I perform a DELETE request using course name parameter
+    Given the "Dev" course endpoint is "https://tla-school-api.herokuapp.com/api/school/programs/devcourse"
+    Given  I send a POST request to the course endpoint with following fields
+      | duration | 1000 days  |
+      | name     | Dev new Course |
+    When I perform a DELETE request using course name parameter
     Then the delete should be successful with status code 200
 
   @AS-22
   Scenario: Deleting existing SDET course from db
     Given the "SDET" course endpoint is "https://tla-school-api.herokuapp.com/api/school/programs/sdetcourse"
-    Given  I send a POST request to the course endpoint
-    And I retrieve a course name
-    When To delete an existing, I perform a DELETE request using course name parameter
+    Given  I send a POST request to the course endpoint with following fields
+      | duration | 1000 days  |
+      | name     | SDET new Course |
+    When I perform a DELETE request using course name parameter
     Then the delete should be successful with status code 200
 
   @AS-26

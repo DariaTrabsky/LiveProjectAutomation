@@ -77,8 +77,6 @@ public class Api_StepDefinitions {
         .header("Content-Type", "application/json")
         .body(jsonPayload);
 
-
-
     }
     @When("I perform a POST request to add the student")
     public void iPerformPOSTRequestToAddTheStudent() {
@@ -94,75 +92,77 @@ public class Api_StepDefinitions {
 
     }
 
-    @When("I send a POST request to the course endpoint")
-    public void iSendAPOSTRequestToTheSDETCourseEndpoint() {
-        RequestSpecification request = RestAssured.given()
-                .header("Content-Type", "application/json")
-                .body("{\"duration\": \"1000 days\", \"name\": \"Course New\"}");
 
-        postResponse = request.post(endpoint).then().log().all().extract().response();
-        System.out.println(endpoint);
-        CucumbersLogUtils.logInfo(postResponse.asPrettyString(),false);
-    }
+    @Given("I send a POST request to the course endpoint with following fields")
+    public void sendPOSTRequest(Map<String, String> fields) {
+        String duration = fields.get("duration");
+        String name = fields.get("name");
 
-    @Given("I retrieve a course name")
-    public void retrieveCourseName() {
-        courseName = postResponse.jsonPath().getString("data.name");
-        System.out.println(courseName);
-    }
+            RequestSpecification request = RestAssured.given()
+                    .header("Content-Type", "application/json")
+                    .body("{ \"duration\": \"" + duration + "\", \"name\": \"" + name + "\" }");
 
-    @When("To delete an existing, I perform a DELETE request using course name parameter")
-    public void performDELETERequest() {
-        RequestSpecification request = RestAssured.given().queryParam("name", courseName);
-        deleteResponse = request.delete(endpoint);
-    }
-
-    @Then("the delete should be successful with status code {int}")
-    public void verifyStatusCode(int statusCode) {
-        Assert.assertEquals(statusCode, deleteResponse.getStatusCode());
-    }
-
-    @Given("the API endpoint is {string}")
-    public void theAPIEndpointIs(String endpoint) {
-        this.endpoint = endpoint;
-    }
-
-    @When("a Get request is made with the {string}")
-    public void aGetRequestIsMadeWithThe(String credentials) {
-        String username;
-        String password;
-        switch (credentials){
-            case "Invalid Credentials":
-                 username = "InvalidUser";
-                 password = "user1234";
-                break;
-            case "Valid Credentials":
-                 username = "user";
-                 password = "user123";
-            default:
-                throw new IllegalArgumentException("enter credentials");
+            postResponse = request.post(endpoint).then().log().all().extract().response();
+            System.out.println(endpoint);
+            CucumbersLogUtils.logInfo(postResponse.asPrettyString(), false);
+            courseName = postResponse.jsonPath().getString("data.name");
+            System.out.println(courseName);
         }
-        RequestSpecification request = RestAssured.given();
-        request.param("username", username);
-        request.param("password", password);
 
-        response = request.post(endpoint);
-    }
 
-    @And("the response body should contain {string}")
-    public void theResponseBodyShouldContain(String expectedResponse) {
-
-        String responseBody = response.getBody().asString();
-
-        switch (expectedResponse) {
-            case "Valid username and password required":
-                Assert.assertTrue(responseBody.contains("Valid username and password required"));
-                break;
-            case "a bearer token":
-                Assert.assertThat(responseBody, Matchers.containsString("bearer token"));
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid expected message: " + expectedResponse);
+        @When("I perform a DELETE request using course name parameter")
+        public void performDELETERequest () {
+            RequestSpecification request = RestAssured.given().queryParam("name", courseName);
+            deleteResponse = request.delete(endpoint);
+            System.out.println(endpoint);
         }
-    }
+
+        @Then("the delete should be successful with status code {int}")
+        public void verifyStatusCode ( int statusCode){
+            Assert.assertEquals(statusCode, deleteResponse.getStatusCode());
+        }
+
+        @Given("the API endpoint is {string}")
+        public void theAPIEndpointIs (String endpoint){
+            this.endpoint = endpoint;
+        }
+
+        @When("a Get request is made with the {string}")
+        public void aGetRequestIsMadeWithThe (String credentials){
+            String username;
+            String password;
+            switch (credentials) {
+                case "Invalid Credentials":
+                    username = "InvalidUser";
+                    password = "user1234";
+                    break;
+                case "Valid Credentials":
+                    username = "user";
+                    password = "user123";
+                default:
+                    throw new IllegalArgumentException("enter credentials");
+            }
+            RequestSpecification request = RestAssured.given();
+            request.param("username", username);
+            request.param("password", password);
+
+            response = request.post(endpoint);
+        }
+
+        @And("the response body should contain {string}")
+        public void theResponseBodyShouldContain (String expectedResponse){
+
+            String responseBody = response.getBody().asString();
+
+            switch (expectedResponse) {
+                case "Valid username and password required":
+                    Assert.assertTrue(responseBody.contains("Valid username and password required"));
+                    break;
+                case "a bearer token":
+                    Assert.assertThat(responseBody, Matchers.containsString("bearer token"));
+                    break;
+                default:
+                    throw new IllegalArgumentException("Invalid expected message: " + expectedResponse);
+            }
+        }
 }
