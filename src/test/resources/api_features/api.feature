@@ -45,4 +45,14 @@ Feature: perform a request for verifying course data for SDET and Dev
     When To delete an existing, I perform a DELETE request using course name parameter
     Then the delete should be successful with status code 200
 
+  @AS-26
+  Scenario: User requests a bearer token with valid/invalid credentials
+    Given the API endpoint is "https://tla-school-api.herokuapp.com/api/school/departments/gettoken"
+    When a Get request is made with the "Invalid Credentials"
+    Then the response status code is 401
+    And the response body should contain "Valid username and password required"
+    When a Get request is made with the "Valid Credentials"
+    Then the response status code is 200
+    And the response body should contain "a bearer token"
+
 

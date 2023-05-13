@@ -8,6 +8,7 @@ import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import org.hamcrest.Matchers;
 import org.junit.Assert;
 import utils.BrowserUtils;
 import utils.CucumbersLogUtils;
@@ -93,7 +94,6 @@ public class Api_StepDefinitions {
 
     }
 
-
     @When("I send a POST request to the course endpoint")
     public void iSendAPOSTRequestToTheSDETCourseEndpoint() {
         RequestSpecification request = RestAssured.given()
@@ -122,4 +122,47 @@ public class Api_StepDefinitions {
         Assert.assertEquals(statusCode, deleteResponse.getStatusCode());
     }
 
+    @Given("the API endpoint is {string}")
+    public void theAPIEndpointIs(String endpoint) {
+        this.endpoint = endpoint;
+    }
+
+    @When("a Get request is made with the {string}")
+    public void aGetRequestIsMadeWithThe(String credentials) {
+        String username;
+        String password;
+        switch (credentials){
+            case "Invalid Credentials":
+                 username = "InvalidUser";
+                 password = "user1234";
+                break;
+            case "Valid Credentials":
+                 username = "user";
+                 password = "user123";
+            default:
+                throw new IllegalArgumentException("enter credentials");
+        }
+        RequestSpecification request = RestAssured.given();
+        request.param("username", username);
+        request.param("password", password);
+
+        response = request.post(endpoint);
+    }
+
+    @And("the response body should contain {string}")
+    public void theResponseBodyShouldContain(String expectedResponse) {
+
+        String responseBody = response.getBody().asString();
+
+        switch (expectedResponse) {
+            case "Valid username and password required":
+                Assert.assertTrue(responseBody.contains("Valid username and password required"));
+                break;
+            case "a bearer token":
+                Assert.assertThat(responseBody, Matchers.containsString("bearer token"));
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid expected message: " + expectedResponse);
+        }
+    }
 }
