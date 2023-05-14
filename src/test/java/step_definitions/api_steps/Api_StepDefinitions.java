@@ -5,15 +5,13 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
-import utils.BrowserUtils;
+import utils.ApiUtils;
 import utils.CucumbersLogUtils;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,6 +23,7 @@ public class Api_StepDefinitions {
     String courseName;
     private RequestSpecification request;
     private String endpoint;
+
     @Given("the {string} course endpoint is {string}")
     public void theSDETCourseEndpointIs(String courseType, String endpoint) {
         if (courseType.equalsIgnoreCase("SDET")) {
@@ -74,10 +73,11 @@ public class Api_StepDefinitions {
 
         String jsonPayload = "{\"batch\":\"" + batch + "\",\"firstName\":\"" + firstName + "\",\"lastName\":\"" + lastName + "\",\"email\":\"" + email + "\"}";
         request = RestAssured.given()
-        .header("Content-Type", "application/json")
-        .body(jsonPayload);
+                .header("Content-Type", "application/json")
+                .body(jsonPayload);
 
     }
+
     @When("I perform a POST request to add the student")
     public void iPerformPOSTRequestToAddTheStudent() {
         response = request.post("https://tla-school-api.herokuapp.com/api/school/resources/students");
@@ -86,7 +86,7 @@ public class Api_StepDefinitions {
     @Then("the student should be successfully added to the database")
     public void theStudentShouldBeSuccessfullyAddedToTheDatabase() {
         response = response.then().log().all().extract().response();
-        CucumbersLogUtils.logInfo(response.asPrettyString(),false);
+        CucumbersLogUtils.logInfo(response.asPrettyString(), false);
         int statusCode = response.getStatusCode();
         Assert.assertEquals(200, statusCode);
 
@@ -98,71 +98,66 @@ public class Api_StepDefinitions {
         String duration = fields.get("duration");
         String name = fields.get("name");
 
-            RequestSpecification request = RestAssured.given()
-                    .header("Content-Type", "application/json")
-                    .body("{ \"duration\": \"" + duration + "\", \"name\": \"" + name + "\" }");
+        RequestSpecification request = RestAssured.given()
+                .header("Content-Type", "application/json")
+                .body("{ \"duration\": \"" + duration + "\", \"name\": \"" + name + "\" }");
 
-            postResponse = request.post(endpoint).then().log().all().extract().response();
-            System.out.println(endpoint);
-            CucumbersLogUtils.logInfo(postResponse.asPrettyString(), false);
-            courseName = postResponse.jsonPath().getString("data.name");
-            System.out.println(courseName);
-        }
+        postResponse = request.post(endpoint).then().log().all().extract().response();
+        System.out.println(endpoint);
+        CucumbersLogUtils.logInfo(postResponse.asPrettyString(), false);
+        courseName = postResponse.jsonPath().getString("data.name");
+        System.out.println(courseName);
+    }
 
 
-        @When("I perform a DELETE request using course name parameter")
-        public void performDELETERequest () {
-            RequestSpecification request = RestAssured.given().queryParam("name", courseName);
-            deleteResponse = request.delete(endpoint);
-            System.out.println(endpoint);
-        }
+    @When("I perform a DELETE request using course name parameter")
+    public void performDELETERequest() {
+        RequestSpecification request = RestAssured.given().queryParam("name", courseName);
+        deleteResponse = request.delete(endpoint);
+        System.out.println(endpoint);
+    }
 
-        @Then("the delete should be successful with status code {int}")
-        public void verifyStatusCode ( int statusCode){
-            Assert.assertEquals(statusCode, deleteResponse.getStatusCode());
-        }
+    @Then("the delete should be successful with status code {int}")
+    public void verifyStatusCode(int statusCode) {
+        Assert.assertEquals(statusCode, deleteResponse.getStatusCode());
+    }
 
-        @Given("the API endpoint is {string}")
-        public void theAPIEndpointIs (String endpoint){
-            this.endpoint = endpoint;
-        }
+    @Given("the API endpoint is {string}")
+    public void theAPIEndpointIs(String endpoint) {
+        this.endpoint = endpoint;
+    }
 
-        @When("a Get request is made with the {string}")
-        public void aGetRequestIsMadeWithThe (String credentials){
-            String username;
-            String password;
-            switch (credentials) {
-                case "Invalid Credentials":
-                    username = "InvalidUser";
-                    password = "user1234";
-                    break;
-                case "Valid Credentials":
-                    username = "user";
-                    password = "user123";
-                default:
-                    throw new IllegalArgumentException("enter credentials");
-            }
-            RequestSpecification request = RestAssured.given();
-            request.param("username", username);
-            request.param("password", password);
+    @And("a get request is made with valid username {string} and password {string}")
+    public void aGetRequestIsMadeWithValidCredentials(String username, String password) {
+        response = RestAssured.given()
+                .auth().preemptive().basic(username, password)
+                .when()
+                .get("https://tla-school-api.herokuapp.com/api/school/departments/gettoken");
+        CucumbersLogUtils.logInfo(response.asPrettyString(),false);
 
-            response = request.post(endpoint);
-        }
+    }
 
-        @And("the response body should contain {string}")
-        public void theResponseBodyShouldContain (String expectedResponse){
+    @And("the response body contains the error message {string}")
+    public void theResponseBodyShouldContainErrorMsg(String expectedResponse) {
+        Assert.assertEquals(response.then().extract().body().jsonPath().get("message"), expectedResponse);
+        CucumbersLogUtils.logInfo(response.asPrettyString(),false);
 
-            String responseBody = response.getBody().asString();
+    }
 
-            switch (expectedResponse) {
-                case "Valid username and password required":
-                    Assert.assertTrue(responseBody.contains("Valid username and password required"));
-                    break;
-                case "a bearer token":
-                    Assert.assertThat(responseBody, Matchers.containsString("bearer token"));
-                    break;
-                default:
-                    throw new IllegalArgumentException("Invalid expected message: " + expectedResponse);
-            }
-        }
+    @Then("the response body should contain token")
+    public void theResponseBodyShouldContain() {
+        response.then().body("token", Matchers.notNullValue());
+        CucumbersLogUtils.logInfo(response.asPrettyString(),false);
+
+    }
+
+    @And("a get request is made with following invalid {string} and {string}:")
+    public void aGetRequestIsMadeWithFollowingInvalidAnd(String username, String password) {
+        response = RestAssured.given()
+                .header("Authorization", username, password)
+                .when()
+                .get(endpoint);
+        CucumbersLogUtils.logInfo(response.asPrettyString(),false);
+
+    }
 }

@@ -1,4 +1,4 @@
-@CourseApi @api
+@api
 Feature: perform a request for verifying course data for SDET and Dev
 
   @AS-20
@@ -33,7 +33,7 @@ Feature: perform a request for verifying course data for SDET and Dev
   Scenario: Deleting existing Dev course from db
     Given the "Dev" course endpoint is "https://tla-school-api.herokuapp.com/api/school/programs/devcourse"
     Given  I send a POST request to the course endpoint with following fields
-      | duration | 1000 days  |
+      | duration | 1000 days      |
       | name     | Dev new Course |
     When I perform a DELETE request using course name parameter
     Then the delete should be successful with status code 200
@@ -42,19 +42,33 @@ Feature: perform a request for verifying course data for SDET and Dev
   Scenario: Deleting existing SDET course from db
     Given the "SDET" course endpoint is "https://tla-school-api.herokuapp.com/api/school/programs/sdetcourse"
     Given  I send a POST request to the course endpoint with following fields
-      | duration | 1000 days  |
+      | duration | 1000 days       |
       | name     | SDET new Course |
     When I perform a DELETE request using course name parameter
     Then the delete should be successful with status code 200
 
   @AS-26
-  Scenario: User requests a bearer token with valid/invalid credentials
+  Scenario: User requests a bearer token with valid credentials
     Given the API endpoint is "https://tla-school-api.herokuapp.com/api/school/departments/gettoken"
-    When a Get request is made with the "Invalid Credentials"
-    Then the response status code is 401
-    And the response body should contain "Valid username and password required"
-    When a Get request is made with the "Valid Credentials"
-    Then the response status code is 200
-    And the response body should contain "a bearer token"
+    And a get request is made with valid username "user" and password "user123"
+    Then the response body should contain token
+    And the response status code is 200
+
+  @AS-26
+  Scenario Outline: Error message should be returned in case credentials are invalid.
+    Given the API endpoint is "https://tla-school-api.herokuapp.com/api/school/departments/gettoken"
+    And a get request is made with following invalid "<username>" and "<password>":
+    And the response body contains the error message "Valid username and password required"
+    And the response status code is 401
+    Examples:
+      | username | password |
+      | user     | user$123 |
+      | 124      | @#@      |
+      | $#@      | user     |
+      | u        | 124      |
+
+
+
+
 
 

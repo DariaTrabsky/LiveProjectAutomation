@@ -5,10 +5,11 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
-public class apiUtils {
+public class ApiUtils {
 
     public Map<String, Object> createRequestMap(String username, String password) {
         Map<String, Object> map = new HashMap<String, Object>();
@@ -96,6 +97,10 @@ public class apiUtils {
     public static int sendPostRequestAndGetStatusCode(String endpoint, Map<String, Object> requestBody, Map<String, Object> queryParams) {
         Response response = sendPostRequest(endpoint, requestBody, queryParams);
         return response.getStatusCode();
+    }
+    public static String encodeCredentials(String username, String password) {
+        String credentials = username + ":" + password;
+        return Base64.getEncoder().encodeToString(credentials.getBytes());
     }
 
 }
