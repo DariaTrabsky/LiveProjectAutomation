@@ -400,6 +400,39 @@ public class HomeSteps {
 
         }
     }
+
+    @Then("verify copyright text should be updated with {string}")
+    public void verifyCopyrightTextShouldBeUpdatedWith(String text) {
+        String actualText = page.copyrightText.getText();
+        BrowserUtils.assertEquals(actualText,text);
+    }
+
+    @Then("verify main header section is {string}")
+    public void verifyMainHeaderSectionIs(String headerText) {
+        String actualText = page.mainHeader.getText();
+        BrowserUtils.sleep(2000);
+        BrowserUtils.waitForElementVisibility(page.mainHeader);
+        BrowserUtils.clickWithJs(page.mainHeader);
+        BrowserUtils.highlightElement(page.mainHeader);
+        BrowserUtils.assertEquals(actualText,headerText);
+    }
+
+
+    @Then("verify secondary header is {string}")
+    public void verifySecondaryHeaderIs(String headerText) {
+        String actualText = page.secondaryHeader.getText();
+        BrowserUtils.waitForElementVisibility(page.secondaryHeader);
+        BrowserUtils.clickWithJs(page.moveToTopBtn);
+        BrowserUtils.highlightElement(page.secondaryHeader);
+        BrowserUtils.assertEquals(actualText,headerText);
+    }
+
+
+    @Then("verify description text is displayed")
+    public void verifyDescriptionTextIsDisplayed() {
+        BrowserUtils.waitForElementVisibility(page.descriptionText);
+        BrowserUtils.isDisplayed(page.descriptionText);
+    }
 }
 
 

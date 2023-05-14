@@ -105,4 +105,16 @@ Feature: Homepage Scenarios
       | Email              |
       | Hours Of Operation |
 
+  @AS-18
+  Scenario: Copyright update
+   // Then verify copyright text should be updated with "Copyrights © 2023 Advance Systems LLC. All Rights Reserved."
+
+  @AS-19
+  Scenario: Verify main header section
+    Then verify main header section is "Welcome to Advance Systems LLC."
+    Then verify secondary header is "Our Mission is simple, deliver very honest recruitment services to every customer."
+    Then verify description text is displayed
+
+
+
 

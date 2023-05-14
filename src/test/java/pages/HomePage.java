@@ -162,5 +162,16 @@ public class HomePage {
     @FindBy(xpath = "//ul[@class='list-info']")
     public WebElement footerContactInfo;
 
+    @FindBy(xpath = "//div[@class='footer-copyright']")
+    public WebElement copyrightText;
+
+    @FindBy(xpath = "//div[@class='sec-title centered']")
+    public WebElement mainHeader;
+
+    @FindBy(xpath = "//div[@class='title']/h4")
+    public WebElement secondaryHeader;
+
+    @FindBy(xpath = "//div[@class='sec-title centered']/following::p[@align='center']")
+    public WebElement descriptionText;
 
 }
