@@ -404,6 +404,8 @@ public class HomeSteps {
     @Then("verify copyright text should be updated with {string}")
     public void verifyCopyrightTextShouldBeUpdatedWith(String text) {
         String actualText = page.copyrightText.getText();
+        BrowserUtils.clickWithJs(page.copyrightText);
+        BrowserUtils.highlightElement(page.copyrightText);
         BrowserUtils.assertEquals(actualText,text);
     }
 

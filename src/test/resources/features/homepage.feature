@@ -107,7 +107,7 @@ Feature: Homepage Scenarios
 
   @AS-18
   Scenario: Copyright update
-   // Then verify copyright text should be updated with "Copyrights © 2023 Advance Systems LLC. All Rights Reserved."
+   Then verify copyright text should be updated with "Copyright © 2023 Advance Systems LLC. All Rights Reserved."
 
   @AS-19
   Scenario: Verify main header section
