@@ -98,9 +98,5 @@ public class ApiUtils {
         Response response = sendPostRequest(endpoint, requestBody, queryParams);
         return response.getStatusCode();
     }
-    public static String encodeCredentials(String username, String password) {
-        String credentials = username + ":" + password;
-        return Base64.getEncoder().encodeToString(credentials.getBytes());
-    }
 
 }
