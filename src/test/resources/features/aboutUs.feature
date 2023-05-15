@@ -18,3 +18,26 @@ Feature: About Us Scenarios
    When I click on {string} button
     Then verify title of the services page is "Advance Systems - Services"
 
+  @AS-28
+  Scenario: There should be a main header “Welcome to Advance Systems LLC.”
+    Then verify main header is "Welcome to Advance Systems LLC."
+    Then verify this section should contain name and title of the person.
+
+  @AS-30
+  Scenario: This section should have a header “Meet Our Experts”.
+    Then verify employee header is "Meet Our Experts"
+    And verify the following information is displayed:
+      | picture            |
+      | title              |
+      | quote              |
+      | social media links |
+      | Facebook           |
+      | twitter            |
+      | Skype              |
+      | Linkedin           |
+
+  @AS-32
+  Scenario: This section should have 4 headers with description texts.
+    Then verify following headers with descriptions are displayed:
+
+

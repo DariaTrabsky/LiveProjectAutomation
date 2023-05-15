@@ -198,4 +198,20 @@ public class HomePage {
     @FindBy(xpath = "(//a[text()='About Us'])[1]")
     public WebElement aboutUsNavBtn;
 
+    @FindBy(xpath = "//h2[text()='A bright career is']")
+    public WebElement homePageFHeader;
+
+    @FindBy(xpath = "//h2[text()='Think Big.']")
+    public WebElement homePageSHeader;
+
+    @FindBy(xpath = "//div[text()='Our Career Network will enhance your job search and']")
+    public WebElement homePageDescription;
+
+    @FindBy(xpath = "//a[text()='Read More']")
+    public WebElement homePageReadMoreButton;
+
+    @FindBy(xpath = "/html/body/div[1]/header/div[2]/div/div/div[1]/div/a/img")
+    public WebElement header;
+
+
 }
