@@ -1,8 +1,6 @@
 /.idea
 .DS_Store
-/target
-target/cucumber-reports/cucumber.json
-target/report.html
-/CukesRunner.java
+target
+src/test/java/runners/CukesRunner.java
 /ConfigLocal.properties
 LiveProjectAutomation.iml
