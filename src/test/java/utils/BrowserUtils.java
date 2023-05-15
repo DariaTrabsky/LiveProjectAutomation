@@ -172,8 +172,8 @@ public class BrowserUtils {
     public static void assertEquals(String actual, String expected){
         //TODO: apply report -> logInfo("Expected: " + expected);
         //TODO: apply report -> logInfo("Actual: " + actual);
-        CucumbersLogUtils.logInfo("Actual: "+ actual, true);
-        CucumbersLogUtils.logInfo("Expected: "+expected, true);
+        CucumbersLogUtils.logInfo("Actual: "+ actual, false);
+        CucumbersLogUtils.logInfo("Expected: "+expected, false);
         Assert.assertEquals(expected, actual);
     }
     public static void assertFalse(boolean result){
