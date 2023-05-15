@@ -24,10 +24,10 @@ public class HomePage {
     @FindBy(xpath = "(//a[text()='Home'])[2]")
     public WebElement homeSecNavBarBtn;
 
-    @FindBy(xpath ="(//a[text()='About Us'])[2]")
+    @FindBy(xpath = "//a[text()='About Us']")
     public WebElement aboutUsSecNavBtn;
 
-    @FindBy(xpath = "(//a[text()='Services'])[2]" )
+    @FindBy(xpath = "(//a[text()='Services'])[2]")
     public WebElement servicesSecNavBtn;
 
     @FindBy(xpath = "(//a[text()='Clients'])[2]")
@@ -44,7 +44,6 @@ public class HomePage {
 
     @FindBy(xpath = "//span[@class='icon icon-interface']")
     public WebElement scrollIntoView;
-
 
 
     @FindBy(xpath = " //div[@class='header-top-one']//div[@class='container']")
@@ -71,7 +70,7 @@ public class HomePage {
     public WebElement joinNowBtn;
 
     @FindBy(xpath = "//div[@class='socail-icon-area']//a")
-    public List <WebElement> socialMediaButtons;
+    public List<WebElement> socialMediaButtons;
 
     @FindBy(xpath = "//li/a/i[@class='fa fa-facebook-square']")
     public WebElement facebookBtn;
@@ -151,7 +150,7 @@ public class HomePage {
     public WebElement footerAddressInfo;
 
     @FindBy(xpath = "//span[@class='fa fa-phone']")
-    public  WebElement footerPhoneInfo;
+    public WebElement footerPhoneInfo;
 
     @FindBy(xpath = "(//span[@class='fa fa-envelope'])[1]")
     public WebElement footerEmailInfo;
@@ -196,5 +195,7 @@ public class HomePage {
 
     @FindBy(xpath = "(//a[text()='Contact Us'])[1]")
     public WebElement contactUsNavBtn;
-}
+    @FindBy(xpath = "(//a[text()='About Us'])[1]")
+    public WebElement aboutUsNavBtn;
 
+}
