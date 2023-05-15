@@ -5,7 +5,6 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 
-import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
