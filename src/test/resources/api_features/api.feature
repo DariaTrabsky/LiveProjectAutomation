@@ -67,6 +67,25 @@ Feature: perform a request for verifying course data for SDET and Dev
       | $#@      | user     |
       | u        | 124      |
 
+  @AS-21
+  Scenario: Add a new course to the database
+    Given the "Dev" course endpoint is "https://tla-school-api.herokuapp.com/api/school/programs/devcourse"
+    When I send a POST request to the Dev course endpoint to add the course
+    Then the response status code is 200
+    And the response body contains the following fields:
+      | id       |
+      | name     |
+      | duration |
+
+  @AS-21
+  Scenario: Add a new course to the database
+    Given the "SDET" course endpoint is "https://tla-school-api.herokuapp.com/api/school/programs/sdetcourse"
+    When I send a POST request to the SDET course endpoint to add the course
+    Then the response status code is 200
+    And the response body contains the following fields:
+      | id       |
+      | name     |
+      | duration |
 
 
 
