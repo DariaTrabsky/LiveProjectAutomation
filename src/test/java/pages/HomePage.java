@@ -174,9 +174,27 @@ public class HomePage {
     @FindBy(xpath = "//div[@class='sec-title centered']/following::p[@align='center']")
     public WebElement descriptionText;
 
+    @FindBy(xpath = "//div[@class='flex-box']")
+    public List<WebElement> servicesSection;
+    @FindBy(xpath = "//div[@class='flex-box']")
+    public WebElement servicesSectionBox;
+    @FindBy(xpath = "//h3[text()='Leadership Development']/following-sibling::div[1]")
+    public WebElement leadershipDevText;
+
+    @FindBy(xpath = "//h3[text()='Capability Building']/following-sibling::div[1]")
+    public WebElement capabilityBldText;
+    @FindBy(xpath = "//h3[text()='Rewards & Benefits']/following-sibling::div[1]")
+    public WebElement rewardsBenefitsText;
+    @FindBy(xpath = "//h3[text()='Employee & Employer']/following-sibling::div[1]")
+    public WebElement employeeEmployerText;
+
+    @FindBy(xpath = "//h3[text()='Excellent Customer Service']/following-sibling::div[1]")
+    public WebElement customerServiceText;
+
     @FindBy(xpath = "(//a[text()='Services'])[1]")
     public WebElement servicesNavBtn;
 
     @FindBy(xpath = "(//a[text()='Contact Us'])[1]")
     public WebElement contactUsNavBtn;
 }
+
