@@ -26,6 +26,20 @@ public class AboutUsPage {
     @FindBy(xpath = "//a[text()='Our Services']")
     public WebElement OurServicesBtn;
 
+    @FindBy(xpath = "//h1[text()='We are Recruitment Experts']")
+    public WebElement WeAreRecruitmentExpertsText;
+
+    @FindBy(xpath = "//h3[text()='On Time Services']")
+    public WebElement onTimeServicesHeader;
+
+    @FindBy(xpath = "//h3[text()='Experienced Team']")
+    public WebElement experiencedTeamHeader;
+
+    @FindBy(xpath = "//h3[text()='Good Track Records']")
+    public WebElement goodTrackRecordsHeader;
+
+
+
 
 }
 
