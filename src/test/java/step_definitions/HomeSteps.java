@@ -435,7 +435,28 @@ public class HomeSteps {
         BrowserUtils.waitForElementVisibility(page.descriptionText);
         BrowserUtils.isDisplayed(page.descriptionText);
     }
+
+    @When("the section with services loads")
+    public void theSectionWithServicesLoads() {
+        for (WebElement servicesSection : page.servicesSection) {
+            BrowserUtils.isDisplayed(servicesSection);
+        }
+    }
+    @Then("the section with services should display the following items with their descriptions:")
+    public void theSectionWithServicesShouldDisplayTheFollowingItemsWithTheirDescriptions(Map<String, String> services) {
+        BrowserUtils.assertEquals(page.leadershipDevText.getText(), services.get("Leadership Development"));
+        BrowserUtils.isDisplayed(page.leadershipDevText);
+        BrowserUtils.assertEquals(page.capabilityBldText.getText(), services.get("Capability Building"));
+        BrowserUtils.isDisplayed(page.capabilityBldText);
+        BrowserUtils.assertEquals(page.rewardsBenefitsText.getText(), services.get("Rewards & Benefits"));
+        BrowserUtils.isDisplayed(page.rewardsBenefitsText);
+        BrowserUtils.assertEquals(page.employeeEmployerText.getText(), services.get("Employee & Employer Relations"));
+        BrowserUtils.isDisplayed(page.employeeEmployerText);
+        BrowserUtils.assertEquals(page.customerServiceText.getText(), services.get("Excellent Customer Service"));
+        BrowserUtils.isDisplayed(page.customerServiceText);
+    }
 }
+
 
 
 
