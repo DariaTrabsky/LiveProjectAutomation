@@ -21,6 +21,14 @@ public class JoinUsSteps {
                 BrowserUtils.click(homePage.joinNowBtn);
                 BrowserUtils.switchToNewWindow();
                 break;
+            case "services":
+                BrowserUtils.click(homePage.servicesNavBtn);
+                BrowserUtils.switchToNewWindow();
+                break;
+            case "contact us":
+                BrowserUtils.click(homePage.contactUsNavBtn);
+                BrowserUtils.switchToNewWindow();
+                break;
             default:
                 System.out.println("Invalid button");
         }

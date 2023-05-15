@@ -174,4 +174,9 @@ public class HomePage {
     @FindBy(xpath = "//div[@class='sec-title centered']/following::p[@align='center']")
     public WebElement descriptionText;
 
+    @FindBy(xpath = "(//a[text()='Services'])[1]")
+    public WebElement servicesNavBtn;
+
+    @FindBy(xpath = "(//a[text()='Contact Us'])[1]")
+    public WebElement contactUsNavBtn;
 }
