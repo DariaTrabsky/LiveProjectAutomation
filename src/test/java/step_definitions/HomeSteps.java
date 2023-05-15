@@ -455,7 +455,8 @@ public class HomeSteps {
         BrowserUtils.assertEquals(page.customerServiceText.getText(), services.get("Excellent Customer Service"));
         BrowserUtils.isDisplayed(page.customerServiceText);
     }
-}
+
+    }
 
 
 

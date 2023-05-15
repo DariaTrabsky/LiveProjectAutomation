@@ -10,7 +10,6 @@ import io.restassured.specification.RequestSpecification;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import utils.CucumbersLogUtils;
-
 import java.util.List;
 import java.util.Map;
 
