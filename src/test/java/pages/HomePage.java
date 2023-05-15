@@ -191,5 +191,10 @@ public class HomePage {
     @FindBy(xpath = "//h3[text()='Excellent Customer Service']/following-sibling::div[1]")
     public WebElement customerServiceText;
 
+    @FindBy(xpath = "(//a[text()='Services'])[1]")
+    public WebElement servicesNavBtn;
+
+    @FindBy(xpath = "(//a[text()='Contact Us'])[1]")
+    public WebElement contactUsNavBtn;
 }
 
