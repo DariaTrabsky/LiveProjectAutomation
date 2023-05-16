@@ -11,7 +11,7 @@ import utils.CucumbersLogUtils;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Hooks {
+public class ApiHooks {
     private static String token;
 
     public static String getToken() {
@@ -19,7 +19,7 @@ public class Hooks {
     }
 
     public static void setToken(String token) {
-        Hooks.token = token;
+        ApiHooks.token = token;
     }
 
     @Before
@@ -43,7 +43,7 @@ public class Hooks {
                 .response();
         token = response.jsonPath().getString("token");
         if (token != null) {
-            Hooks.setToken(token);
+            ApiHooks.setToken(token);
             System.out.println("Token retrieved: " + token);
         } else {
             System.out.println("Failed to retrieve token");
@@ -53,6 +53,6 @@ public class Hooks {
 
     @After("@token")
     public void clearToken() {
-        Hooks.setToken(null);
+        ApiHooks.setToken(null);
     }
 }

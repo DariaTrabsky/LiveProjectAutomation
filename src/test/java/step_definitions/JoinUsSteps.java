@@ -2,6 +2,7 @@ package step_definitions;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.JavascriptExecutor;
 import pages.AboutUsPage;
 import pages.HomePage;
 import pages.JoinUsPage;
@@ -37,7 +38,7 @@ public class JoinUsSteps {
                 BrowserUtils.switchToNewWindow();
                 break;
             case "our services":
-                BrowserUtils.click(aboutUsPage.OurServicesBtn);
+                BrowserUtils.clickWithJs(aboutUsPage.OurServicesBtn);
                 break;
             default:
                 System.out.println("Invalid button");
