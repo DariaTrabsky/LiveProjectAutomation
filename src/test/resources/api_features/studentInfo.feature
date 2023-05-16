@@ -19,3 +19,13 @@ Feature: perform a request for verifying student info
       | 777            |
       | Johny@test.com |
 
+
+  @AS-25
+  Scenario: Delete an existing student by ID
+    Given I perform a post request to create new student info with following fields
+      | firstName | John        |
+      | lastName  | Doe         |
+      | batch     | 0           |
+      | email     | api@test.com|
+    When I perform a DELETE request using student id parameter
+    Then verify the DELETE should be successfully with status code 200

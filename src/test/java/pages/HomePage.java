@@ -24,10 +24,10 @@ public class HomePage {
     @FindBy(xpath = "(//a[text()='Home'])[2]")
     public WebElement homeSecNavBarBtn;
 
-    @FindBy(xpath ="(//a[text()='About Us'])[2]")
+    @FindBy(xpath = "//a[text()='About Us']")
     public WebElement aboutUsSecNavBtn;
 
-    @FindBy(xpath = "(//a[text()='Services'])[2]" )
+    @FindBy(xpath = "(//a[text()='Services'])[2]")
     public WebElement servicesSecNavBtn;
 
     @FindBy(xpath = "(//a[text()='Clients'])[2]")
@@ -44,7 +44,6 @@ public class HomePage {
 
     @FindBy(xpath = "//span[@class='icon icon-interface']")
     public WebElement scrollIntoView;
-
 
 
     @FindBy(xpath = " //div[@class='header-top-one']//div[@class='container']")
@@ -71,7 +70,7 @@ public class HomePage {
     public WebElement joinNowBtn;
 
     @FindBy(xpath = "//div[@class='socail-icon-area']//a")
-    public List <WebElement> socialMediaButtons;
+    public List<WebElement> socialMediaButtons;
 
     @FindBy(xpath = "//li/a/i[@class='fa fa-facebook-square']")
     public WebElement facebookBtn;
@@ -151,7 +150,7 @@ public class HomePage {
     public WebElement footerAddressInfo;
 
     @FindBy(xpath = "//span[@class='fa fa-phone']")
-    public  WebElement footerPhoneInfo;
+    public WebElement footerPhoneInfo;
 
     @FindBy(xpath = "(//span[@class='fa fa-envelope'])[1]")
     public WebElement footerEmailInfo;
@@ -174,9 +173,45 @@ public class HomePage {
     @FindBy(xpath = "//div[@class='sec-title centered']/following::p[@align='center']")
     public WebElement descriptionText;
 
+    @FindBy(xpath = "//div[@class='flex-box']")
+    public List<WebElement> servicesSection;
+    @FindBy(xpath = "//div[@class='flex-box']")
+    public WebElement servicesSectionBox;
+    @FindBy(xpath = "//h3[text()='Leadership Development']/following-sibling::div[1]")
+    public WebElement leadershipDevText;
+
+    @FindBy(xpath = "//h3[text()='Capability Building']/following-sibling::div[1]")
+    public WebElement capabilityBldText;
+    @FindBy(xpath = "//h3[text()='Rewards & Benefits']/following-sibling::div[1]")
+    public WebElement rewardsBenefitsText;
+    @FindBy(xpath = "//h3[text()='Employee & Employer']/following-sibling::div[1]")
+    public WebElement employeeEmployerText;
+
+    @FindBy(xpath = "//h3[text()='Excellent Customer Service']/following-sibling::div[1]")
+    public WebElement customerServiceText;
+
     @FindBy(xpath = "(//a[text()='Services'])[1]")
     public WebElement servicesNavBtn;
 
     @FindBy(xpath = "(//a[text()='Contact Us'])[1]")
     public WebElement contactUsNavBtn;
+    @FindBy(xpath = "(//a[text()='About Us'])[1]")
+    public WebElement aboutUsNavBtn;
+
+    @FindBy(xpath = "//h2[text()='A bright career is']")
+    public WebElement homePageFHeader;
+
+    @FindBy(xpath = "//h2[text()='Think Big.']")
+    public WebElement homePageSHeader;
+
+    @FindBy(xpath = "//div[text()='Our Career Network will enhance your job search and']")
+    public WebElement homePageDescription;
+
+    @FindBy(xpath = "//a[text()='Read More']")
+    public WebElement homePageReadMoreButton;
+
+    @FindBy(xpath = "/html/body/div[1]/header/div[2]/div/div/div[1]/div/a/img")
+    public WebElement header;
+
+
 }

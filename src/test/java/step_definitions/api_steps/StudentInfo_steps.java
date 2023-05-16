@@ -75,6 +75,42 @@ public class StudentInfo_steps {
             Assert.assertTrue(response.getBody().asString().contains(field));
         }
     }
+
+    @Given("I perform a post request to create new student info with following fields")
+    public void iPerformAPostRequestToCreateNewStudentInfoWithFollowingFields(Map<String, String> data) {
+        request = RestAssured.given()
+                .header("Content-Type", "application/json");
+
+        String requestBody = "{ " +
+                "\"firstName\": \"" + data.get("firstName") + "\"," +
+                "\"lastName\": \"" + data.get("lastName") + "\"," +
+                "\"batch\": " + data.get("batch") + "," +
+                "\"email\": \"" + data.get("email") + "\"" +
+                "}";
+        request.body(requestBody);
+
+        response = request.post(endpoint);
+        studentId = response.jsonPath().getString("data._id");
+        System.out.println(studentId);
+    }
+
+    @When("I perform a DELETE request using student id parameter")
+    public void iPerformADELETERequestUsingStudentIdParameter() {
+        request = given()
+                .header("Content-Type", "application/json")
+                .queryParam("key", "d03e989018msh7f4691c614e87a9p1a8181j");
+
+        response = request.delete(endpoint + "/" + studentId).then().log().all().extract().response();
+    }
+
+    @Then("verify the DELETE should be successfully with status code {int}")
+    public void verifyTheDELETEShouldBeSuccessfullyWithStatusCode(int statusCode) {
+
+        response = response.then().log().all().extract().response();
+        int actualStatusCode = response.getStatusCode();
+        Assert.assertEquals(statusCode, actualStatusCode);
+
+    }
 }
 
 

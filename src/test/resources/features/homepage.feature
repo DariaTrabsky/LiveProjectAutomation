@@ -115,6 +115,23 @@ Feature: Homepage Scenarios
     Then verify secondary header is "Our Mission is simple, deliver very honest recruitment services to every customer."
     Then verify description text is displayed
 
+  @AS-10
+  Scenario: Verify section with 5 items and their descriptions
+    When the section with services loads
+    Then the section with services should display the following items with their descriptions:
+      | Leadership Development        | Lorem Ipsum is simply dummy text of the printing and typesetting industry. |
+      | Capability Building           | Lorem Ipsum is simply dummy text of the printing and typesetting industry. |
+      | Rewards & Benefits            | Lorem Ipsum is simply dummy text of the printing and typesetting industry. |
+      | Employee & Employer Relations | Lorem Ipsum is simply dummy text of the printing and typesetting industry. |
+      | Excellent Customer Service    | Lorem Ipsum is simply dummy text of the printing and typesetting industry. |
+
+
+  @AS-4
+  Scenario: There should be a section under navigation bar with Header, description and Read More button.
+    Then verify read more button is displayed and takes user to the services page
+    Then verify header is displayed
+    Then verify description is displayed
+    Then verify Section content should refresh with new set of header and description
 
 
 

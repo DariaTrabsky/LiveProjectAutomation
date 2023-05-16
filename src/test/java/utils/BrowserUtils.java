@@ -13,12 +13,12 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import utils.ConfigReader;
 
 public class BrowserUtils {
     private BrowserUtils() {
@@ -172,8 +172,8 @@ public class BrowserUtils {
     public static void assertEquals(String actual, String expected){
         //TODO: apply report -> logInfo("Expected: " + expected);
         //TODO: apply report -> logInfo("Actual: " + actual);
-        CucumbersLogUtils.logInfo("Actual: "+ actual, true);
-        CucumbersLogUtils.logInfo("Expected: "+expected, true);
+        CucumbersLogUtils.logInfo("Actual: "+ actual, false);
+        CucumbersLogUtils.logInfo("Expected: "+expected, false);
         Assert.assertEquals(expected, actual);
     }
     public static void assertFalse(boolean result){

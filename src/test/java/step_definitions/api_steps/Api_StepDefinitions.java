@@ -10,7 +10,6 @@ import io.restassured.specification.RequestSpecification;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import utils.CucumbersLogUtils;
-
 import java.util.List;
 import java.util.Map;
 
@@ -159,4 +158,22 @@ public class Api_StepDefinitions {
         CucumbersLogUtils.logInfo(response.asPrettyString(),false);
 
     }
+    @When("I send a POST request to the SDET course endpoint to add the course")
+    public void iSendAPOSTRequestToTheSDETCourseEndpointToAddTheCourse() {
+        String courseData = "{\"name\":\"C++\", \"duration\":\"6 months\"}";
+        request = RestAssured.given()
+                .header("Content-Type", "application/json")
+                .body(courseData);
+        response = request.post(endpoint).then().log().all().extract().response();
+    }
+
+    @When("I send a POST request to the Dev course endpoint to add the course")
+    public void iSendAPOSTRequestToTheDevCourseEndpointToAddTheCourse() {
+        String courseData = "{\"name\":\"C\", \"duration\":\"3 months\"}";
+        request = RestAssured.given()
+                .header("Content-Type", "application/json")
+                .body(courseData);
+        response = request.post(endpoint).then().log().all().extract().response();
+    }
 }
+
