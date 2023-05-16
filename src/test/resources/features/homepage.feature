@@ -126,4 +126,12 @@ Feature: Homepage Scenarios
       | Excellent Customer Service    | Lorem Ipsum is simply dummy text of the printing and typesetting industry. |
 
 
+  @AS-4
+  Scenario: There should be a section under navigation bar with Header, description and Read More button.
+    Then verify read more button is displayed and takes user to the services page
+    Then verify header is displayed
+    Then verify description is displayed
+    Then verify Section content should refresh with new set of header and description
+
+
 
